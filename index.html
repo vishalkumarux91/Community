@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RPS Community — A calmer place to grow as a designer</title>
+  <meta name="description" content="Curated tools, AI-built learning paths, mentor sessions, and honest critique — in one quiet community for UI/UX designers." />
+  <!-- Self-contained: uses system fonts so the file works fully offline. -->
+
+  <script>
+    // Pre-paint theme to avoid flash
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      --bg-sunken: #fbfbfb;
+      --bg-raised: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f4f4f5;
+      --text-strong: #0a0a0b;
+      --text-weak: rgba(10, 10, 11, 0.68);
+      --text-muted: rgba(10, 10, 11, 0.45);
+      --text-inverse-strong: #ffffff;
+      --stroke-strong: rgba(10, 10, 11, 0.16);
+      --stroke-weak: rgba(10, 10, 11, 0.09);
+      --stroke-faint: rgba(10, 10, 11, 0.05);
+      --fill-strong: #0a0a0b;
+      --accent-orange: #ff5a1f;
+      --accent-yellow: #d6a84a;
+      color-scheme: light;
+    }
+    html[data-theme="dark"] {
+      --bg-sunken: #0a0a0b;
+      --bg-raised: #111113;
+      --bg-card: #111113;
+      --bg-card-hover: #18181b;
+      --text-strong: #fafafa;
+      --text-weak: rgba(250, 250, 250, 0.72);
+      --text-muted: rgba(250, 250, 250, 0.48);
+      --text-inverse-strong: #0a0a0b;
+      --stroke-strong: rgba(250, 250, 250, 0.2);
+      --stroke-weak: rgba(250, 250, 250, 0.09);
+      --stroke-faint: rgba(250, 250, 250, 0.05);
+      --fill-strong: #fafafa;
+      color-scheme: dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme="light"]) {
+        --bg-sunken: #0a0a0b;
+        --bg-raised: #111113;
+        --bg-card: #111113;
+        --bg-card-hover: #18181b;
+        --text-strong: #fafafa;
+        --text-weak: rgba(250, 250, 250, 0.72);
+        --text-muted: rgba(250, 250, 250, 0.48);
+        --text-inverse-strong: #0a0a0b;
+        --stroke-strong: rgba(250, 250, 250, 0.2);
+        --stroke-weak: rgba(250, 250, 250, 0.09);
+        --stroke-faint: rgba(250, 250, 250, 0.05);
+        --fill-strong: #fafafa;
+        color-scheme: dark;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      background: var(--bg-sunken);
+      color: var(--text-strong);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { min-height: 100dvh; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    input, textarea { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 40px; } }
+
+    .display { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; letter-spacing: -0.025em; font-weight: 600; }
+    .eyebrow {
+      font-size: 11px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--text-muted);
+    }
+
+    /* ===== Header ===== */
+    .header {
+      position: sticky; top: 0; z-index: 30;
+      border-bottom: 1px solid var(--stroke-faint);
+      background: color-mix(in srgb, var(--bg-sunken) 80%, transparent);
+      backdrop-filter: blur(16px);
+    }
+    .header .row {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: inherit; font-weight: 600; font-size: 15px;
+    }
+    .mark {
+      display: grid; place-items: center;
+      width: 32px; height: 32px; border-radius: 6px;
+      background: var(--fill-strong); color: var(--text-inverse-strong);
+      font-size: 12px; font-weight: 600;
+    }
+    .nav { display: none; gap: 28px; }
+    .nav a { color: var(--text-weak); font-size: 14px; transition: color .15s; }
+    .nav a:hover { color: var(--text-strong); }
+    @media (min-width: 768px) { .nav { display: flex; } }
+
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+    .icon-btn {
+      display: grid; place-items: center;
+      width: 36px; height: 36px; border-radius: 999px;
+      border: 1px solid var(--stroke-weak); background: transparent;
+      color: var(--text-weak); transition: color .15s;
+    }
+    .icon-btn:hover { color: var(--text-strong); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 999px; font-size: 14px;
+      font-weight: 500; border: 1px solid transparent; transition: opacity .15s, background .15s;
+    }
+    .btn-primary { background: var(--fill-strong); color: var(--text-inverse-strong); }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary {
+      background: var(--bg-card); color: var(--text-strong);
+      border-color: var(--stroke-weak);
+    }
+    .btn-secondary:hover { background: var(--bg-card-hover); }
+    .btn-ghost { color: var(--text-weak); }
+    .btn-ghost:hover { color: var(--text-strong); }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--stroke-faint);
+    }
+    .hero-glow {
+      pointer-events: none; position: absolute;
+      left: -160px; top: 50%; transform: translateY(-50%);
+      width: 480px; height: 480px; border-radius: 999px;
+      background: rgba(255, 90, 31, 0.07);
+      filter: blur(80px);
+    }
+    .hero-inner { padding: 80px 0 96px; }
+    @media (min-width: 768px) { .hero-inner { padding: 112px 0 128px; } }
+    .hero-content { max-width: 720px; margin: 0 auto; text-align: center; }
+    .pill {
+      display: inline-flex; align-items: center;
+      padding: 4px 12px; border-radius: 999px;
+      border: 1px solid var(--stroke-weak); background: var(--bg-card);
+      font-size: 12px; color: var(--text-weak);
+    }
+    .hero h1 {
+      margin: 28px 0 20px; font-weight: 500; line-height: 1.05;
+      font-size: 44px;
+    }
+    @media (min-width: 768px) { .hero h1 { font-size: 68px; } }
+    .hero p.subtitle {
+      margin: 0 auto; max-width: 560px;
+      font-size: 15px; line-height: 1.6; color: var(--text-weak);
+    }
+    @media (min-width: 768px) { .hero p.subtitle { font-size: 16px; } }
+
+    .cta-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; margin-top: 36px;
+    }
+
+    /* prompt */
+    .prompt {
+      max-width: 640px; margin: 48px auto 0;
+      border-radius: 16px; border: 1px solid var(--stroke-weak);
+      background: var(--bg-card); padding: 8px;
+      box-shadow: 0 1px 0 0 var(--stroke-faint);
+    }
+    .prompt-row {
+      display: flex; gap: 12px; padding: 12px 12px 0;
+    }
+    .prompt textarea {
+      flex: 1; resize: none; min-height: 52px; line-height: 1.6;
+      background: transparent; color: var(--text-strong);
+      border: 0; outline: 0;
+      font-size: 15px;
+    }
+    .prompt textarea::placeholder { color: var(--text-muted); }
+    .prompt-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--stroke-faint); padding: 8px;
+      margin-top: 8px;
+    }
+    .prompt .hint { padding: 0 8px; font-size: 12px; color: var(--text-muted); }
+    .prompt .send {
+      display: grid; place-items: center;
+      width: 32px; height: 32px; border-radius: 6px;
+      background: var(--fill-strong); color: var(--text-inverse-strong);
+      border: 0; transition: opacity .15s;
+    }
+    .prompt .send:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    .suggestions {
+      list-style: none; padding: 0; margin: 16px auto 0;
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+      max-width: 640px;
+    }
+    .suggestions button {
+      padding: 4px 12px; border-radius: 999px;
+      border: 1px solid var(--stroke-weak); background: var(--bg-card);
+      font-size: 12px; color: var(--text-weak); transition: color .15s;
+    }
+    .suggestions button:hover { color: var(--text-strong); }
+
+    .members {
+      margin-top: 64px; display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+    }
+    .members ul {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-wrap: wrap; gap: 12px 32px;
+      justify-content: center;
+    }
+    .members li { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+
+    /* ===== Pillars ===== */
+    .section { border-bottom: 1px solid var(--stroke-faint); padding: 96px 0; }
+    .pillars-head { max-width: 640px; }
+    .pillars-head h2 {
+      margin: 12px 0; font-weight: 500; letter-spacing: -0.01em;
+      font-size: 28px; line-height: 1.2;
+    }
+    @media (min-width: 768px) { .pillars-head h2 { font-size: 32px; } }
+    .pillars-head p { margin: 0; color: var(--text-weak); font-size: 15px; line-height: 1.6; }
+
+    .pillars {
+      display: grid; gap: 40px;
+      grid-template-columns: 1fr;
+      margin-top: 48px;
+    }
+    @media (min-width: 768px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+    .pillar { display: flex; flex-direction: column; gap: 12px; }
+    .pillar .num {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+    .pillar h3 { margin: 0; font-family: inherit; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+    .pillar p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-weak); }
+    .pillar a {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; transition: opacity .15s;
+    }
+    .pillar a:hover { opacity: 0.7; }
+
+    /* ===== Tools ===== */
+    .tools-row {
+      display: grid; gap: 32px;
+      grid-template-columns: 1fr;
+      margin-top: 40px;
+    }
+    @media (min-width: 768px) { .tools-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .tools-row { grid-template-columns: repeat(3, 1fr); } }
+    .tool { display: flex; gap: 16px; align-items: flex-start; }
+    .tool-tile {
+      width: 44px; height: 44px; border-radius: 8px;
+      display: grid; place-items: center;
+      font-family: inherit; font-weight: 600; font-size: 13px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .tool-content { flex: 1; min-width: 0; }
+    .tool-head {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .tool-head h3 { margin: 0; font-weight: 500; font-size: 15px; }
+    .tool-head .rating {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .tool p { margin: 4px 0 8px; font-size: 14px; line-height: 1.55; color: var(--text-weak); }
+    .tool small { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+
+    /* ===== Testimonial ===== */
+    .testimonial {
+      max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    .testimonial blockquote {
+      margin: 0; font-family: inherit; font-weight: 600; letter-spacing: -0.01em;
+      font-size: 24px; line-height: 1.3; letter-spacing: -0.01em;
+    }
+    @media (min-width: 768px) { .testimonial blockquote { font-size: 28px; } }
+    .testimonial figcaption {
+      margin-top: 24px; display: flex; justify-content: center; align-items: center;
+      gap: 12px; font-size: 14px;
+    }
+    .testimonial .avatar {
+      display: grid; place-items: center;
+      width: 36px; height: 36px; border-radius: 999px;
+      border: 1px solid var(--stroke-weak); background: var(--bg-card);
+      font-size: 12px; font-weight: 600; color: var(--text-strong);
+    }
+    .testimonial .who { display: flex; flex-direction: column; align-items: flex-start; }
+    .testimonial .who span:last-child { color: var(--text-muted); font-size: 13px; }
+
+    /* ===== Footer ===== */
+    .footer { border-top: 1px solid var(--stroke-faint); }
+    .footer-grid {
+      padding: 64px 0;
+      display: grid; gap: 40px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr repeat(3, 1fr); } }
+    .footer-grid p { margin: 12px 0 0; font-size: 14px; color: var(--text-weak); max-width: 280px; }
+    .footer-col h4 {
+      margin: 0 0 12px; font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--text-muted); font-weight: 500;
+    }
+    .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { font-size: 14px; color: var(--text-weak); transition: color .15s; }
+    .footer-col a:hover { color: var(--text-strong); }
+    .footer-bottom {
+      border-top: 1px solid var(--stroke-faint);
+      padding: 24px 0; font-size: 12px; color: var(--text-muted);
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+    }
+    .footer-bottom .links { display: flex; gap: 20px; }
+    .footer-bottom a:hover { color: var(--text-strong); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container row">
+      <a href="#" class="logo">
+        <span class="mark">R</span>
+        RPS Community
+      </a>
+      <nav class="nav">
+        <a href="#learn">Learn</a>
+        <a href="#tools">Tools</a>
+        <a href="#mentors">Mentors</a>
+        <a href="#community">Community</a>
+        <a href="#jobs">Jobs</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+          <svg id="icon-moon" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+            <path d="M16.5 11.5A7 7 0 0 1 8.5 3.5a7 7 0 1 0 8 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+          </svg>
+          <svg id="icon-sun" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true" style="display:none">
+            <circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a class="btn btn-ghost" href="#">Sign in</a>
+        <a class="btn btn-primary" href="#">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <span class="pill">Trusted by 1,200+ designers from product teams worldwide</span>
+        <h1 class="display">Grow as a designer, together.</h1>
+        <p class="subtitle">Curated tools, AI-built learning paths, mentor sessions, and honest critique — in one quiet community.</p>
+
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="#community">Browse community</a>
+          <a class="btn btn-primary" href="#">
+            Get started — it&rsquo;s free
+            <svg viewBox="0 0 20 20" width="14" height="14" fill="none" aria-hidden="true">
+              <path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="prompt">
+          <div class="prompt-row">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" style="color: var(--accent-orange); margin-top: 4px; flex-shrink:0;" aria-hidden="true">
+              <path d="M10 1.5 11.4 6 16 7.4 11.4 8.8 10 13.4 8.6 8.8 4 7.4 8.6 6Zm5 9 .8 2 2 .8-2 .8L15 16l-.8-1.9-2-.8 2-.8ZM4.5 12l.6 1.5L6.6 14l-1.5.6L4.5 16l-.6-1.4L2.5 14l1.4-.5Z"/>
+            </svg>
+            <textarea id="prompt" rows="2" placeholder="What do you want to learn or get better at?"></textarea>
+          </div>
+          <div class="prompt-foot">
+            <span class="hint">↵ to start</span>
+            <button id="send" class="send" aria-label="Generate" disabled>
+              <svg viewBox="0 0 20 20" width="14" height="14" fill="none" aria-hidden="true" style="transform: rotate(-90deg)">
+                <path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="suggestions" id="suggestions"></ul>
+      </div>
+
+      <div class="members">
+        <p class="eyebrow">Members from</p>
+        <ul>
+          <li>Razorpay</li><li>Swiggy</li><li>Microsoft</li>
+          <li>Atlassian</li><li>Figma</li><li>Stripe</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pillars">
+    <div class="container">
+      <div class="pillars-head">
+        <p class="eyebrow">What you get</p>
+        <h2 class="display">Four pillars, one quiet home.</h2>
+        <p>Built for designers who&rsquo;d rather stop tab-hopping and start shipping.</p>
+      </div>
+      <div class="pillars" id="pillars-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="container">
+      <p class="eyebrow">Tools</p>
+      <h2 class="display" style="margin: 12px 0 0; font-weight: 500; font-size: 28px; letter-spacing: -0.01em;">
+        Hand-picked, honestly reviewed.
+      </h2>
+      <div class="tools-row" id="tools-list"></div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonial">
+    <div class="container">
+      <figure class="testimonial">
+        <blockquote class="display">
+          &ldquo;What I like most is that it&rsquo;s not just showcasing tools — it&rsquo;s helping me understand how to use them in real design workflows.&rdquo;
+        </blockquote>
+        <figcaption>
+          <span class="avatar" aria-hidden="true">MR</span>
+          <span class="who">
+            <span style="font-weight:500">Maya R.</span>
+            <span>Senior Product Designer · Swiggy</span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo"><span class="mark">R</span> RPS Community</a>
+          <p>A calmer community for UI/UX designers — built with the people in it.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Learn</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Mentors</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Jobs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Feed</a></li>
+            <li><a href="#">Critique</a></li>
+            <li><a href="#">Become a mentor</a></li>
+            <li><a href="#">Rules</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Changelog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p id="copy">© 2026 RPS Community. Built with the community.</p>
+        <div class="links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    var moon = document.getElementById("icon-moon");
+    var sun = document.getElementById("icon-sun");
+    function syncIcons() {
+      var t = document.documentElement.getAttribute("data-theme")
+        || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      sun.style.display = t === "dark" ? "" : "none";
+      moon.style.display = t === "dark" ? "none" : "";
+    }
+    syncIcons();
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+      var current = document.documentElement.getAttribute("data-theme")
+        || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      var next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncIcons();
+    });
+
+    // Suggestions
+    var suggestions = [
+      "Master Figma in 4 weeks",
+      "Switch from graphic design to product",
+      "Prep for big-tech design interviews",
+      "Build a design system from scratch"
+    ];
+    var ul = document.getElementById("suggestions");
+    var prompt = document.getElementById("prompt");
+    var send = document.getElementById("send");
+    suggestions.forEach(function (s) {
+      var li = document.createElement("li");
+      var b = document.createElement("button");
+      b.textContent = s;
+      b.addEventListener("click", function () {
+        prompt.value = s; send.disabled = false; prompt.focus();
+      });
+      li.appendChild(b);
+      ul.appendChild(li);
+    });
+    prompt.addEventListener("input", function () { send.disabled = !prompt.value.trim(); });
+    prompt.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        if (prompt.value.trim()) {
+          alert("In the live app this would route you to a curated learning journey for: " + prompt.value);
+        }
+      }
+    });
+    send.addEventListener("click", function () {
+      if (!prompt.value.trim()) return;
+      alert("In the live app this would route you to a curated learning journey for: " + prompt.value);
+    });
+
+    // Pillars
+    var pillars = [
+      { title: "Learn", body: "Pick a topic — Figma, design systems, UX research — and get an AI-curated path of videos, articles, exercises, and projects. No more random tabs.", href: "#" },
+      { title: "Mentor sessions", body: "1:1 portfolio reviews and live workshops with senior designers from product teams shipping at scale. Booked by the hour.", href: "#" },
+      { title: "Honest critique", body: "Drop your work in the open. Get focused feedback from the community — and from mentors who opt in to your post.", href: "#" },
+      { title: "Portfolio builder", body: "Import LinkedIn. We suggest case studies based on the role you're targeting, then ship a live portfolio site in minutes.", href: "#" }
+    ];
+    var pl = document.getElementById("pillars-list");
+    pillars.forEach(function (p, i) {
+      var div = document.createElement("div");
+      div.className = "pillar";
+      div.innerHTML =
+        '<span class="num">0' + (i + 1) + '</span>' +
+        '<h3>' + p.title + '</h3>' +
+        '<p>' + p.body + '</p>' +
+        '<a href="' + p.href + '">Open ' + p.title.toLowerCase() +
+          ' <svg viewBox="0 0 20 20" width="14" height="14" fill="none" aria-hidden="true">' +
+            '<path d="M4 10h12m0 0-4-4m4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>' +
+        '</a>';
+      pl.appendChild(div);
+    });
+
+    // Tools — colored brand tiles + generic letterform monogram
+    var tools = [
+      { name: "Figma", category: "Design", desc: "Collaborative interface design tool — the industry default.", rating: 4.9, label: "Fi", bg: "#0ACF83", fg: "#fff" },
+      { name: "Framer", category: "Prototyping", desc: "Design and publish responsive websites visually.", rating: 4.7, label: "Fr", bg: "#0055FF", fg: "#fff" },
+      { name: "Midjourney", category: "AI", desc: "Cinematic AI image generation for moodboards & concept art.", rating: 4.9, label: "Mj", bg: "#0E0E10", fg: "#fff" },
+      { name: "ChatGPT", category: "AI", desc: "Conversational AI for ideation, copy, and code.", rating: 4.8, label: "GPT", bg: "#10A37F", fg: "#fff" },
+      { name: "Notion", category: "Collaboration", desc: "Docs, wikis, and project tracking — the designer's second brain.", rating: 4.6, label: "No", bg: "#ffffff", fg: "#0a0a0b", border: true },
+      { name: "Maze", category: "Research", desc: "Unmoderated usability tests, surveys, and prototype testing.", rating: 4.5, label: "Mz", bg: "#1F0F46", fg: "#fff" }
+    ];
+    var tl = document.getElementById("tools-list");
+    tools.forEach(function (t) {
+      var el = document.createElement("a");
+      el.className = "tool";
+      el.href = "#";
+      el.innerHTML =
+        '<span class="tool-tile" style="background:' + t.bg + ';color:' + t.fg + ';' +
+          (t.border ? 'border:1px solid var(--stroke-weak);' : '') + '">' + t.label + '</span>' +
+        '<div class="tool-content">' +
+          '<div class="tool-head">' +
+            '<h3>' + t.name + '</h3>' +
+            '<span class="rating">' +
+              '<svg viewBox="0 0 20 20" width="11" height="11" fill="#d6a84a" aria-hidden="true">' +
+                '<path d="M10 1.6 12.6 7l5.9.85-4.27 4.16 1 5.87L10 15.13 4.77 17.88l1-5.87L1.5 7.85 7.4 7Z"/>' +
+              '</svg>' + t.rating +
+            '</span>' +
+          '</div>' +
+          '<p>' + t.desc + '</p>' +
+          '<small>' + t.category + '</small>' +
+        '</div>';
+      tl.appendChild(el);
+    });
+
+    // Year in footer
+    document.getElementById("copy").textContent = "© " + new Date().getFullYear() + " RPS Community. Built with the community.";
+  </script>
+</body>
+</html>
