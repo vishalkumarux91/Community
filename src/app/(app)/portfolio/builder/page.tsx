@@ -157,7 +157,7 @@ export default function PortfolioBuilderPage() {
 
   const handleSubdomain = () => {
     if (!subdomain.trim()) return;
-    addUser(`rps.community/${subdomain}`);
+    addUser(`opencanvas.community/${subdomain}`);
 
     const cfg: PortfolioConfig = {
       linkedin,
@@ -307,7 +307,7 @@ export default function PortfolioBuilderPage() {
         )}
         {stage === "subdomain" && (
           <div className="flex items-center gap-2 rounded-full border border-stroke-weak bg-bg-card p-1">
-            <span className="px-3 text-sm text-text-muted">rps.community/</span>
+            <span className="px-3 text-sm text-text-muted">opencanvas.community/</span>
             <input
               value={subdomain}
               onChange={(e) =>

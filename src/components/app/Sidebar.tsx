@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { Logo } from "@/components/ui/Logo";
 import {
-  Home,
   Compass,
-  Tools,
   Users,
   Briefcase,
   Megaphone,
@@ -21,10 +19,8 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-  { href: "/dashboard", label: "Home", icon: Home },
-  { href: "/learn", label: "Learn", icon: Compass },
-  { href: "/tools", label: "Tools", icon: Tools },
   { href: "/community", label: "Community", icon: Megaphone },
+  { href: "/learn", label: "Learn", icon: Compass },
   { href: "/teach", label: "Mentors", icon: Users },
   { href: "/portfolio", label: "Portfolio", icon: Layers },
   { href: "/jobs", label: "Jobs", icon: Briefcase },

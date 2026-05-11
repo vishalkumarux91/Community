@@ -60,7 +60,7 @@ export default function SignInPage() {
               <span className="h-px flex-1 bg-stroke-faint" />
             </div>
 
-            <form className="space-y-3">
+            <form className="space-y-3" action="/community">
               <Input type="email" placeholder="you@design.studio" />
               <Input type="password" placeholder="Password" />
               <button type="submit" className="w-full rounded-full bg-fill-strong py-2.5 text-sm font-medium text-text-inverse-strong">

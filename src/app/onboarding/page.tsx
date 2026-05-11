@@ -45,10 +45,10 @@ export default function OnboardingPage() {
     <div className="grid min-h-dvh place-items-center bg-bg-sunken px-6 py-12">
       <div className="w-full max-w-[640px] space-y-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-accent-orange to-accent-yellow text-bg-sunken">
-            <Sparkles className="size-4" />
+          <span className="font-display grid size-8 place-items-center rounded-lg bg-fill-strong text-[18px] italic text-text-inverse-strong">
+            O
           </span>
-          <span className="font-display font-semibold">RPS Community</span>
+          <span className="text-[15px] font-semibold tracking-tight">Opencanvas</span>
         </Link>
 
         <ol className="flex items-center gap-2">
@@ -172,10 +172,10 @@ export default function OnboardingPage() {
                 </p>
               </header>
               <Link
-                href="/dashboard"
+                href="/community"
                 className="block rounded-full bg-fill-strong py-2.5 text-center text-sm font-medium text-text-inverse-strong"
               >
-                Go to my home
+                Go to the community
               </Link>
             </>
           )}

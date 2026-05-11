@@ -53,7 +53,7 @@ export default function PortfolioPage() {
         <div className="flex items-center gap-3 text-sm">
           <Sparkles className="size-4 text-accent-orange" />
           <span className="text-text-strong">
-            Live at <span className="font-medium">rps.community/{cfg.subdomain}</span>
+            Live at <span className="font-medium">opencanvas.community/{cfg.subdomain}</span>
           </span>
           <span className="hidden text-text-muted md:inline">
             · last generated {new Date(cfg.generatedAt).toLocaleDateString()}

@@ -384,7 +384,7 @@ export function PortfolioBuilder() {
                   </span>
                   <Tag tone="accent">Selected</Tag>
                 </div>
-                <p className="mt-3 font-medium">yourname.rps.community</p>
+                <p className="mt-3 font-medium">yourname.opencanvas.community</p>
                 <p className="mt-1 text-xs text-text-muted">
                   Built and deployed in seconds.
                 </p>

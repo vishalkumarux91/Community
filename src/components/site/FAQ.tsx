@@ -9,7 +9,7 @@ type Tab = (typeof TABS)[number];
 
 const QUESTIONS: Record<Tab, { q: string; a: string }[]> = {
   General: [
-    { q: "What is the platform about?", a: "RPS Community is a curated home for designers exploring AI tools, courses, and conversations. Everything we publish is reviewed by working designers, not scraped from press releases." },
+    { q: "What is the platform about?", a: "Opencanvas is a curated home for designers exploring AI tools, courses, and conversations. Everything we publish is reviewed by working designers, not scraped from press releases." },
     { q: "Do I need prior experience with AI tools?", a: "No. Our beginner tracks assume zero AI background, and we link out to the same primary sources we use ourselves so you can dig deeper at your pace." },
     { q: "How often are new courses added?", a: "New tutorials drop weekly, full courses land roughly once a month, and tool reviews refresh whenever a major version ships." },
     { q: "Is there a free tier?", a: "Yes — most tutorials, tool reviews, and the community itself are free forever. Premium tracks unlock instructor Q&A and project critiques." },
