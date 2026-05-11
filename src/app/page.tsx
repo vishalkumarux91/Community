@@ -1,17 +1,25 @@
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { Hero } from "@/components/site/Hero";
-import { PopularCategories } from "@/components/site/PopularCategories";
-import { Testimonial } from "@/components/site/Testimonial";
+import { OpencanvasHero } from "@/components/site/OpencanvasHero";
+import { LogoStrip } from "@/components/site/LogoStrip";
+import { Bento } from "@/components/site/Bento";
+import { LearningTabs } from "@/components/site/LearningTabs";
+import { TestimonialsBlock } from "@/components/site/TestimonialsBlock";
+import { FAQSection } from "@/components/site/FAQSection";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { Reveals } from "@/components/site/Reveals";
 
 export default function HomePage() {
   return (
     <main className="min-h-dvh bg-bg-sunken text-text-strong">
       <SiteHeader />
-      <Hero />
-      <PopularCategories />
-      <Testimonial />
+      <OpencanvasHero />
+      <LogoStrip />
+      <Bento />
+      <LearningTabs />
+      <TestimonialsBlock />
+      <FAQSection />
       <SiteFooter />
+      <Reveals />
     </main>
   );
 }
