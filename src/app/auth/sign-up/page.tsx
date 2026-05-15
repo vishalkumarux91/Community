@@ -5,10 +5,10 @@ import { Logo } from "@/components/ui/Logo";
 import { Check } from "@/components/ui/Icons";
 
 const PERKS = [
-  "AI-curated learning journeys",
-  "Live mentor sessions & critique",
-  "AI portfolio builder",
-  "Job-prep tracks built in",
+  "Level Up — the mini-course juniors actually need",
+  "Certificate + priority access to RPS Studio jobs",
+  "Live mentor sessions & honest critique",
+  "Curated tools, topics, and journeys",
 ];
 
 export default function SignUpPage() {

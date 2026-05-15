@@ -17,13 +17,13 @@ const ROLES = [
 ];
 
 const GOALS = [
-  "Find my first job",
-  "Build a portfolio",
+  "Earn the Level Up certificate",
   "Get better at Figma",
   "Learn design systems",
   "Switch from graphic design",
-  "Prep for big-tech interviews",
+  "Sharpen design critique",
   "Find a mentor",
+  "Get priority for RPS Studio jobs",
   "Teach what I know",
 ];
 
@@ -45,7 +45,10 @@ export default function OnboardingPage() {
     <div className="grid min-h-dvh place-items-center bg-bg-sunken px-6 py-12">
       <div className="w-full max-w-[640px] space-y-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="font-display grid size-8 place-items-center rounded-lg bg-fill-strong text-[18px] italic text-text-inverse-strong">
+          <span
+            className="font-display grid size-8 place-items-center rounded-[10px] text-[18px] italic"
+            style={{ background: "var(--rainbow)", color: "#0e0e0f", fontWeight: 500 }}
+          >
             O
           </span>
           <span className="text-[15px] font-semibold tracking-tight">Opencanvas</span>

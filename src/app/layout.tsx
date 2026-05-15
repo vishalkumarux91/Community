@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import {
+  Inter_Tight,
+  Instrument_Serif,
+  Fraunces,
+  JetBrains_Mono,
+} from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const interTight = Inter_Tight({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-inter-tight",
   display: "swap",
 });
 
@@ -16,6 +21,14 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -24,9 +37,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Opencanvas — A calmer place to grow as a designer",
+  title: "Opencanvas — Level up your design craft, together.",
   description:
-    "Curated tools, mentor-led topics, honest critique, and portfolio building — in one quiet community for UI/UX designers.",
+    "A members-only mini-course on the practical stuff design school skips — plus curated tools, mentor-led topics, and honest critique in one quiet community.",
 };
 
 // Sets data-theme before paint to avoid the wrong-theme flash on first load.
@@ -47,7 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      className={`${interTight.variable} ${instrumentSerif.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

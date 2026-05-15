@@ -5,6 +5,10 @@ import { Container } from "@/components/ui/Container";
 
 const FAQS: { q: string; a: string }[] = [
   {
+    q: "What is Level Up?",
+    a: "Our members-only mini-course — a curated playlist of short YouTube lessons (~3 hours total) covering the practical stuff design school skips: Figma file hygiene, discovery questions, working with PMs and engineers, design critique, shipping at pace. Complete the course to earn a signed certificate and priority access to design openings at Rock Paper Scissors Studio.",
+  },
+  {
     q: "Who is Opencanvas for?",
     a: "Working UI/UX designers — from those breaking into product through senior ICs at scaling teams. If you'd rather have a calmer place to learn, get feedback, and grow than another feed full of noise, you'll feel at home.",
   },
@@ -14,7 +18,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Do I have to pay to join?",
-    a: "Reading critiques, browsing tools, and following topics is free. Mentor sessions, premium topics, and the portfolio builder are part of the Member plan — month-to-month, no contracts.",
+    a: "Reading critiques, browsing tools, and following topics is free. Level Up, mentor sessions, and premium topics are part of the Member plan — month-to-month, no contracts.",
   },
   {
     q: "Can I become a mentor?",
@@ -26,7 +30,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What's your AI policy?",
-    a: "Use it; don't hide it. AI is a tool in your stack — we teach prompt patterns, evaluation, and where AI fits in real flows. Submissions should disclose AI assistance, especially in critique and portfolio work.",
+    a: "Use it; don't hide it. AI is a tool in your stack — we teach prompt patterns, evaluation, and where AI fits in real flows. Submissions should disclose AI assistance, especially in critique work.",
   },
 ];
 
@@ -48,8 +52,8 @@ export function FAQSection() {
               Can&rsquo;t find what you&rsquo;re looking for? Email us at{" "}
               <a
                 href="mailto:hi@opencanvas.community"
-                className="text-accent-orange"
-                style={{ borderBottom: "1px solid currentColor" }}
+                className="text-text-strong"
+                style={{ borderBottom: "1px solid var(--accent-pink)" }}
               >
                 hi@opencanvas.community
               </a>

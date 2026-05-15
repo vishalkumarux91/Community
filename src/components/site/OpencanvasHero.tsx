@@ -94,22 +94,40 @@ export function OpencanvasHero() {
 
   return (
     <section className="relative overflow-hidden border-b border-stroke-faint">
-      {/* hero glow */}
+      {/* Rainbow conic hero glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[30%] z-[1] size-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[40px]"
+        className="hero-glow pointer-events-none absolute left-1/2 top-[38%] z-[1] -translate-x-1/2 -translate-y-1/2"
         style={{
+          width: 1100,
+          height: 1100,
+          borderRadius: "999px",
           background:
-            "radial-gradient(circle, color-mix(in srgb, var(--accent-orange) 14%, transparent), transparent 65%)",
+            "conic-gradient(from 200deg at 50% 50%, rgba(255,122,182,0) 0deg, rgba(255,122,182,0.55) 40deg, rgba(255,122,69,0.55) 90deg, rgba(245,196,81,0.55) 140deg, rgba(95,209,163,0.55) 190deg, rgba(106,163,255,0.55) 240deg, rgba(180,139,255,0.55) 290deg, rgba(255,122,182,0) 360deg)",
+          filter: "blur(110px)",
+          opacity: 0.65,
         }}
-      />
+      >
+        <span
+          aria-hidden
+          className="absolute"
+          style={{
+            inset: "18%",
+            borderRadius: "999px",
+            background:
+              "radial-gradient(circle, var(--bg-sunken) 0%, transparent 70%)",
+          }}
+        />
+      </div>
 
       {/* confetti */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
-        {CONFETTI.map((c, i) => (
+        {CONFETTI.map((c, i) => {
+          const hide = "hideSm" in c && c.hideSm;
+          return (
           <div
             key={i}
-            className={`bobble absolute ${c.hideSm ? "hidden sm:block" : ""}`}
+            className={`bobble absolute ${hide ? "hidden sm:block" : ""}`}
             style={c.style as React.CSSProperties}
           >
             {c.kind === "portrait" && (
@@ -161,36 +179,48 @@ export function OpencanvasHero() {
               </span>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <Container className="relative z-[2] py-20 md:py-28">
         <div className="mx-auto max-w-[820px] text-center">
-          <span className="inline-flex items-center rounded-full border border-stroke-weak bg-bg-card px-3 py-1 text-xs text-text-weak">
-            Trusted by 1,200+ designers from product teams worldwide
+          <span
+            className="inline-flex items-center gap-2 rounded-full border border-stroke-weak px-3.5 py-1 pl-1.5 text-xs text-text-weak backdrop-blur-md"
+            style={{
+              background: "color-mix(in srgb, var(--bg-card) 80%, transparent)",
+            }}
+          >
+            <span
+              aria-hidden
+              className="size-[22px] shrink-0 rounded-full"
+              style={{ background: "var(--rainbow)" }}
+            />
+            New · Level Up — the mini-course juniors actually need
           </span>
           <h1
             ref={headingRef}
-            className="font-display mx-auto mt-7 max-w-[820px] text-[56px] font-normal leading-[1.0] text-text-strong [text-wrap:balance] md:text-[96px]"
+            className="font-display mx-auto mt-7 max-w-[820px] text-[56px] font-light leading-[0.98] tracking-[-0.04em] text-text-strong [text-wrap:balance] md:text-[104px]"
           >
-            Grow as a designer, <em>together</em>.
+            Level up your design craft, <em>together</em>.
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-text-weak md:text-base">
-            Curated tools, mentor-led topics, honest critique, and portfolio
-            building — in one quiet community.
+            A members-only mini-course on the practical stuff design school
+            skips — plus curated tools, mentor-led topics, and honest critique
+            in one quiet community.
           </p>
           <div className="mt-9 flex items-center justify-center gap-2.5">
             <Link
               href="/community"
-              className="rounded-full border border-stroke-weak bg-bg-card px-5 py-2.5 text-sm font-medium text-text-strong transition-colors hover:bg-bg-card-hover"
+              className="rounded-full border border-stroke-strong bg-transparent px-5 py-2.5 text-sm font-medium text-text-strong transition-colors hover:bg-bg-card-hover"
             >
               Browse community
             </Link>
             <Link
-              href="/auth/sign-up"
+              href="/levelup"
               className="inline-flex items-center gap-1.5 rounded-full bg-fill-strong px-5 py-2.5 text-sm font-medium text-text-inverse-strong transition-opacity hover:opacity-90"
             >
-              Become a member <ArrowRight className="size-3.5" />
+              Explore Level Up <ArrowRight className="size-3.5" />
             </Link>
           </div>
         </div>
@@ -214,8 +244,7 @@ function splitAndAnimate(el: HTMLElement) {
         const endIdx = html.indexOf("</em>", close + 1);
         if (endIdx !== -1) {
           const inner = html.substring(close + 1, endIdx);
-          // Absorb any punctuation that immediately follows </em> so it
-          // can't orphan onto its own line at wide viewports.
+          // Absorb trailing punctuation so it can't orphan onto its own line.
           let after = endIdx + 5;
           let trailing = "";
           while (after < html.length && /[.,!?;:…]/.test(html[after])) {
@@ -242,7 +271,6 @@ function splitAndAnimate(el: HTMLElement) {
   }
   el.innerHTML = out;
   el.classList.add("text-reveal");
-  // Observe to trigger .in once in view
   if (!("IntersectionObserver" in window)) {
     el.classList.add("in");
     return;

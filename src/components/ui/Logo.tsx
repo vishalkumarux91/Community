@@ -3,9 +3,8 @@ import { cn } from "@/lib/cn";
 /**
  * Opencanvas monogram + wordmark.
  *
- * The monogram is a soft-rounded tile rendering an italic serif "O" — keeps
- * the editorial feel of the design throughout. Both bits are theme-aware
- * because they resolve through fill-strong / text-inverse-strong tokens.
+ * Rainbow-tinted "O" tile renders the italic serif glyph; reads as a
+ * refracted-light beam across the brand.
  */
 export function Logo({
   size = "md",
@@ -24,10 +23,17 @@ export function Logo({
       <span
         aria-hidden
         className={cn(
-          "grid place-items-center rounded-lg bg-fill-strong italic text-text-inverse-strong",
+          "grid place-items-center rounded-[10px] italic",
           "font-display",
           monogramSize,
         )}
+        style={{
+          background: "var(--rainbow)",
+          color: "#0e0e0f",
+          fontWeight: 500,
+          boxShadow:
+            "0 6px 18px -8px rgba(106,163,255,0.55), 0 0 0 1px rgba(243,240,234,0.08) inset",
+        }}
       >
         O
       </span>

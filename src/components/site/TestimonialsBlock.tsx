@@ -25,7 +25,7 @@ const CARDS: Card[] = [
   },
   {
     quote:
-      "I broke into product design after six months here. The portfolio builder + critique loop is the closest thing to a design school I've found online.",
+      "Level Up landed me priority access to a Rock Paper Scissors Studio role. The certificate is on my LinkedIn — the playlist gave me real talking points for the interview.",
     name: "Riya I.",
     role: "Designer · Cred",
     tone: "var(--accent-sage)",
@@ -63,9 +63,20 @@ export function TestimonialsBlock() {
       <Container>
         <div className="mb-14 grid items-end gap-10 md:grid-cols-[1fr_1.4fr] md:gap-20">
           <div className="reveal">
-            <h2 className="font-display m-0 text-[132px] leading-[0.9] tracking-[-0.03em] text-text-strong md:text-[168px]">
+            <h2 className="font-display m-0 text-[132px] font-light leading-[0.88] tracking-[-0.055em] text-text-strong md:text-[176px]">
               1,200
-              <i className="italic text-accent-orange">+</i>
+              <i
+                className="italic"
+                style={{
+                  background: "var(--rainbow)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
+                +
+              </i>
             </h2>
             <p className="mt-3 max-w-[320px] text-base text-text-weak">
               Designers learning, shipping, and growing together — across

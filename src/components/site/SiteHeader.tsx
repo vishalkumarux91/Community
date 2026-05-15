@@ -33,12 +33,6 @@ const LEARN_LINKS: SubLink[] = [
   },
 ];
 
-const TOP_LINKS = [
-  { href: "/community", label: "Community" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/jobs", label: "Jobs" },
-];
-
 const TONE_CLASSES: Record<SubLink["tone"], string> = {
   orange:
     "bg-[color-mix(in_srgb,var(--accent-orange)_14%,var(--bg-card))] text-accent-orange",
@@ -55,6 +49,19 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+          {/* Level Up featured nav link */}
+          <Link
+            href="/levelup"
+            className="inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium text-text-strong transition-colors hover:bg-bg-card-hover"
+          >
+            <span
+              aria-hidden
+              className="nav-pulse size-2 rounded-full"
+              style={{ background: "var(--rainbow)" }}
+            />
+            Level Up
+          </Link>
+
           {/* Learn dropdown */}
           <div className="group relative">
             <button
@@ -119,15 +126,12 @@ export function SiteHeader() {
             </div>
           </div>
 
-          {TOP_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3.5 py-2 text-sm text-text-weak transition-colors hover:bg-bg-card-hover hover:text-text-strong"
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link
+            href="/community"
+            className="rounded-full px-3.5 py-2 text-sm text-text-weak transition-colors hover:bg-bg-card-hover hover:text-text-strong"
+          >
+            Community
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">

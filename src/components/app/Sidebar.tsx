@@ -7,23 +7,22 @@ import { Logo } from "@/components/ui/Logo";
 import {
   Compass,
   Users,
-  Briefcase,
   Megaphone,
-  Layers,
+  Sparkles,
 } from "@/components/ui/Icons";
 
 type NavItem = {
   href: string;
   label: string;
   icon: (p: { className?: string }) => React.JSX.Element;
+  featured?: boolean;
 };
 
 const NAV: NavItem[] = [
+  { href: "/levelup", label: "Level Up", icon: Sparkles, featured: true },
   { href: "/community", label: "Community", icon: Megaphone },
   { href: "/learn", label: "Learn", icon: Compass },
   { href: "/teach", label: "Mentors", icon: Users },
-  { href: "/portfolio", label: "Portfolio", icon: Layers },
-  { href: "/jobs", label: "Jobs", icon: Briefcase },
 ];
 
 export function Sidebar() {
@@ -36,7 +35,7 @@ export function Sidebar() {
       </Link>
 
       <nav className="mt-8 flex flex-1 flex-col gap-0.5">
-        {NAV.map(({ href, label, icon: Icon }) => {
+        {NAV.map(({ href, label, icon: Icon, featured }) => {
           const active = pathname === href || pathname.startsWith(href + "/");
           return (
             <Link
@@ -47,10 +46,33 @@ export function Sidebar() {
                 active
                   ? "bg-bg-card-hover text-text-strong"
                   : "text-text-weak hover:bg-bg-card-hover hover:text-text-strong",
+                featured && !active && "text-text-strong",
               )}
             >
-              <Icon className="size-4" />
+              {featured ? (
+                <span
+                  aria-hidden
+                  className="nav-pulse size-2 shrink-0 rounded-full"
+                  style={{ background: "var(--rainbow)" }}
+                />
+              ) : (
+                <Icon className="size-4" />
+              )}
               {label}
+              {featured && (
+                <span
+                  className="ml-auto rounded-full border px-1.5 py-px text-[9px] font-medium uppercase tracking-wider"
+                  style={{
+                    background:
+                      "color-mix(in srgb, var(--accent-pink) 18%, transparent)",
+                    borderColor:
+                      "color-mix(in srgb, var(--accent-pink) 40%, transparent)",
+                    color: "var(--text-strong)",
+                  }}
+                >
+                  New
+                </span>
+              )}
             </Link>
           );
         })}

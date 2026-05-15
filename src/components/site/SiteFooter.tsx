@@ -4,12 +4,19 @@ import { ArrowRight } from "@/components/ui/Icons";
 
 const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
   {
+    title: "Level Up",
+    items: [
+      ["Overview", "/levelup", true],
+      ["Syllabus", "/levelup"],
+      ["For teams", "/levelup"],
+    ],
+  },
+  {
     title: "Learn",
     items: [
       ["Tools", "/tools"],
-      ["Topics", "/learn", true],
+      ["Topics", "/learn"],
       ["Mentors", "/teach"],
-      ["Portfolio", "/portfolio/builder"],
     ],
   },
   {
@@ -18,16 +25,7 @@ const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
       ["Feed", "/community"],
       ["Critique", "/community"],
       ["Become a mentor", "/teach/become-mentor"],
-      ["Jobs", "/jobs"],
-    ],
-  },
-  {
-    title: "Company",
-    items: [
       ["About", "#"],
-      ["Changelog", "#"],
-      ["Privacy", "#"],
-      ["Terms", "#"],
     ],
   },
 ];
@@ -35,13 +33,13 @@ const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
 export function SiteFooter() {
   return (
     <footer className="relative isolate overflow-hidden border-t border-stroke-faint bg-bg-raised text-text-strong">
-      {/* Warm radial wash */}
+      {/* Rainbow radial wash */}
       <div
         aria-hidden
         className="absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(120% 80% at 50% 110%, color-mix(in srgb, var(--accent-orange) 38%, transparent) 0%, transparent 60%), radial-gradient(80% 60% at 50% 120%, color-mix(in srgb, var(--accent-yellow) 28%, transparent) 0%, transparent 65%)",
+            "radial-gradient(60% 60% at 20% 110%, rgba(255,122,182,0.32) 0%, transparent 60%), radial-gradient(60% 60% at 80% 110%, rgba(106,163,255,0.32) 0%, transparent 60%), radial-gradient(80% 70% at 50% 130%, rgba(245,196,81,0.22) 0%, transparent 65%)",
         }}
       />
       {/* Tiny dot grid */}
@@ -58,9 +56,8 @@ export function SiteFooter() {
       <Container className="relative z-[2]">
         <div className="grid gap-12 py-24 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:pb-16 md:pt-24">
           <div>
-            <h3 className="m-0 font-display text-[44px] leading-none tracking-[-0.01em]">
-              Follow what{" "}
-              <i className="italic text-accent-orange">we&rsquo;re building</i>
+            <h3 className="font-display m-0 text-[46px] leading-[0.98] tracking-[-0.035em]">
+              Follow what <i>we&rsquo;re building</i>
             </h3>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-text-weak">
               Quiet weekly notes — new mentors, fresh topics, deals on tools.
@@ -88,10 +85,12 @@ export function SiteFooter() {
                       {label}
                       {isNew && (
                         <span
-                          className="rounded-full px-1.5 py-0.5 text-[10px] tracking-wider text-accent-orange"
+                          className="rounded-full border px-1.5 py-0.5 text-[10px] tracking-wider text-text-strong"
                           style={{
                             background:
-                              "color-mix(in srgb, var(--accent-orange) 22%, transparent)",
+                              "color-mix(in srgb, var(--accent-pink) 22%, transparent)",
+                            borderColor:
+                              "color-mix(in srgb, var(--accent-pink) 40%, transparent)",
                           }}
                         >
                           NEW

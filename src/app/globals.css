@@ -1,82 +1,97 @@
 @import "tailwindcss";
 
 /*
- * Opencanvas design tokens — warm cream palette + dark mode, swapped via
- * data-theme on <html>. Light is the default. Dark applies via
- * html[data-theme="dark"] or prefers-color-scheme when no choice is set.
+ * Opencanvas design tokens — Portrait-inspired light palette with rainbow
+ * accents. White surfaces, dark ink, refracted-light gradient as the signature.
+ * Light is the default. Dark applies via html[data-theme="dark"] or
+ * prefers-color-scheme when no choice is set.
  */
 :root {
-  --bg-sunken: #f5f1ea;
-  --bg-raised: #fbf8f2;
-  --bg-card: #fbf8f2;
-  --bg-card-hover: #efe9de;
-  --bg-deep: #1a1611;
+  --bg-sunken: #ffffff;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f4f5;
+  --bg-deep: #0e0e0f;
 
-  --text-strong: #1c1a17;
-  --text-weak: rgba(28, 26, 23, 0.70);
-  --text-muted: rgba(28, 26, 23, 0.48);
-  --text-disabled: rgba(28, 26, 23, 0.22);
-  --text-inverse-strong: #fbf8f2;
+  --text-strong: #0e0e0f;
+  --text-weak: rgba(14, 14, 15, 0.62);
+  --text-muted: rgba(14, 14, 15, 0.42);
+  --text-disabled: rgba(14, 14, 15, 0.22);
+  --text-inverse-strong: #ffffff;
 
-  --stroke-strong: rgba(28, 26, 23, 0.18);
-  --stroke-weak: rgba(28, 26, 23, 0.10);
-  --stroke-faint: rgba(28, 26, 23, 0.06);
+  --stroke-strong: rgba(14, 14, 15, 0.18);
+  --stroke-weak: rgba(14, 14, 15, 0.10);
+  --stroke-faint: rgba(14, 14, 15, 0.06);
 
-  --fill-strong: #1c1a17;
+  --fill-strong: #0e0e0f;
 
-  --accent-orange: #e85d2c;
-  --accent-yellow: #d6a84a;
-  --accent-sage: #5e9e6a;
-  --accent-blue: #4a7aff;
+  /* Rainbow accents — refracted-light beam */
+  --accent-orange: #ff7a45;
+  --accent-yellow: #f5c451;
+  --accent-sage: #5fd1a3;
+  --accent-blue: #6aa3ff;
+  --accent-pink: #ff7ab6;
+  --accent-purple: #b48bff;
+
+  --rainbow: linear-gradient(
+    90deg,
+    #ff7ab6 0%,
+    #ff7a45 18%,
+    #f5c451 36%,
+    #5fd1a3 54%,
+    #6aa3ff 72%,
+    #b48bff 90%
+  );
+  --rainbow-soft: linear-gradient(
+    110deg,
+    rgba(255, 122, 182, 0.55) 0%,
+    rgba(255, 122, 69, 0.55) 22%,
+    rgba(245, 196, 81, 0.55) 42%,
+    rgba(95, 209, 163, 0.55) 62%,
+    rgba(106, 163, 255, 0.55) 82%,
+    rgba(180, 139, 255, 0.55) 100%
+  );
 }
 
 html[data-theme="dark"] {
-  --bg-sunken: #15130f;
-  --bg-raised: #1c1a16;
-  --bg-card: #1c1a16;
-  --bg-card-hover: #25221d;
-  --bg-deep: #0c0a08;
+  --bg-sunken: #0e0e0f;
+  --bg-raised: #141416;
+  --bg-card: #18181b;
+  --bg-card-hover: #1f1f22;
+  --bg-deep: #060607;
 
-  --text-strong: #f4ede0;
-  --text-weak: rgba(244, 237, 224, 0.72);
-  --text-muted: rgba(244, 237, 224, 0.48);
-  --text-disabled: rgba(244, 237, 224, 0.22);
-  --text-inverse-strong: #15130f;
+  --text-strong: #f3f0ea;
+  --text-weak: rgba(243, 240, 234, 0.66);
+  --text-muted: rgba(243, 240, 234, 0.40);
+  --text-disabled: rgba(243, 240, 234, 0.22);
+  --text-inverse-strong: #0e0e0f;
 
-  --stroke-strong: rgba(244, 237, 224, 0.2);
-  --stroke-weak: rgba(244, 237, 224, 0.10);
-  --stroke-faint: rgba(244, 237, 224, 0.06);
+  --stroke-strong: rgba(243, 240, 234, 0.18);
+  --stroke-weak: rgba(243, 240, 234, 0.09);
+  --stroke-faint: rgba(243, 240, 234, 0.05);
 
-  --fill-strong: #f4ede0;
-
-  --accent-orange: #f37a4d;
-  --accent-sage: #8ec07c;
-  --accent-blue: #7aa6ff;
+  --fill-strong: #f3f0ea;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --bg-sunken: #15130f;
-    --bg-raised: #1c1a16;
-    --bg-card: #1c1a16;
-    --bg-card-hover: #25221d;
-    --bg-deep: #0c0a08;
-    --text-strong: #f4ede0;
-    --text-weak: rgba(244, 237, 224, 0.72);
-    --text-muted: rgba(244, 237, 224, 0.48);
-    --text-disabled: rgba(244, 237, 224, 0.22);
-    --text-inverse-strong: #15130f;
-    --stroke-strong: rgba(244, 237, 224, 0.2);
-    --stroke-weak: rgba(244, 237, 224, 0.10);
-    --stroke-faint: rgba(244, 237, 224, 0.06);
-    --fill-strong: #f4ede0;
-    --accent-orange: #f37a4d;
-    --accent-sage: #8ec07c;
-    --accent-blue: #7aa6ff;
+    --bg-sunken: #0e0e0f;
+    --bg-raised: #141416;
+    --bg-card: #18181b;
+    --bg-card-hover: #1f1f22;
+    --bg-deep: #060607;
+    --text-strong: #f3f0ea;
+    --text-weak: rgba(243, 240, 234, 0.66);
+    --text-muted: rgba(243, 240, 234, 0.40);
+    --text-disabled: rgba(243, 240, 234, 0.22);
+    --text-inverse-strong: #0e0e0f;
+    --stroke-strong: rgba(243, 240, 234, 0.18);
+    --stroke-weak: rgba(243, 240, 234, 0.09);
+    --stroke-faint: rgba(243, 240, 234, 0.05);
+    --fill-strong: #f3f0ea;
   }
 }
 
-/* Tell the browser which palette we're rendering so form controls match. */
 html { color-scheme: light; }
 html[data-theme="dark"] { color-scheme: dark; }
 @media (prefers-color-scheme: dark) {
@@ -106,9 +121,11 @@ html[data-theme="dark"] { color-scheme: dark; }
   --color-accent-yellow: var(--accent-yellow);
   --color-accent-sage: var(--accent-sage);
   --color-accent-blue: var(--accent-blue);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-purple: var(--accent-purple);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Fraunces", "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --radius-sm: 4px;
@@ -123,6 +140,8 @@ body {
   background: var(--bg-sunken);
   color: var(--text-strong);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -130,20 +149,26 @@ body {
   min-height: 100dvh;
 }
 
-/* Display utility for serif headings */
+/* Display utility for serif headings — uses the rainbow gradient on italics. */
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: -0.015em;
-  font-weight: 400;
+  letter-spacing: -0.03em;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144;
 }
 .font-display em,
 .font-display i {
   font-style: italic;
-  color: var(--accent-orange);
+  font-weight: 300;
+  background: var(--rainbow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 ::selection {
-  background: var(--accent-orange);
+  background: var(--accent-pink);
   color: #fff;
 }
 
@@ -234,7 +259,39 @@ body {
   animation-delay: var(--delay, 0s);
   transform: rotate(var(--r, 0deg));
 }
+
+/* ===== Rainbow hero glow ===== */
+@keyframes hueDrift {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.hero-glow {
+  animation: hueDrift 24s linear infinite;
+}
+
+/* ===== Now-playing pulse (Level Up playlist) ===== */
+@keyframes nowPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.now-pulse {
+  animation: nowPulse 1.6s ease-in-out infinite;
+}
+
+/* ===== Featured nav pulse (Level Up) ===== */
+@keyframes navPulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-pink) 14%, transparent); }
+  50%      { box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent-pink) 0%, transparent); }
+}
+.nav-pulse {
+  animation: navPulse 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .bobble { animation: none; }
-  .animate-marquee, .animate-marquee--fast { animation: none; }
+  .bobble,
+  .hero-glow,
+  .now-pulse,
+  .nav-pulse,
+  .animate-marquee,
+  .animate-marquee--fast { animation: none; }
 }

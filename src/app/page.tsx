@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { OpencanvasHero } from "@/components/site/OpencanvasHero";
 import { LogoStrip } from "@/components/site/LogoStrip";
+import { LevelUpFeature } from "@/components/site/LevelUpFeature";
 import { Bento } from "@/components/site/Bento";
 import { LearningTabs } from "@/components/site/LearningTabs";
 import { TestimonialsBlock } from "@/components/site/TestimonialsBlock";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <SiteHeader />
       <OpencanvasHero />
       <LogoStrip />
+      <LevelUpFeature />
       <Bento />
       <LearningTabs />
       <TestimonialsBlock />

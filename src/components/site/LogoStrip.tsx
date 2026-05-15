@@ -85,7 +85,7 @@ export function LogoStrip() {
       />
       <Container>
         <p className="reveal mb-10 text-center text-xs font-medium uppercase tracking-[0.18em] text-text-muted">
-          Members from
+          We&rsquo;re empowering designers from top product teams
         </p>
       </Container>
       <div
