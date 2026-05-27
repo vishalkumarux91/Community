@@ -165,7 +165,7 @@ export function LearningTabs() {
   const [tab, setTab] = useState<"tools" | "topics">("tools");
 
   return (
-    <section className="border-b border-stroke-faint py-28" id="learn">
+    <section className="scroll-mt-28 py-28" id="learn">
       <Container>
         <div className="reveal mb-10 flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between md:gap-10">
           <div className="max-w-[560px]">

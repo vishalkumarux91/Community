@@ -6,10 +6,8 @@ import { cn } from "@/lib/cn";
 import { Logo } from "@/components/ui/Logo";
 import {
   Compass,
-  Users,
-  Briefcase,
   Megaphone,
-  Layers,
+  GraduationCap,
 } from "@/components/ui/Icons";
 
 type NavItem = {
@@ -21,9 +19,7 @@ type NavItem = {
 const NAV: NavItem[] = [
   { href: "/community", label: "Community", icon: Megaphone },
   { href: "/learn", label: "Learn", icon: Compass },
-  { href: "/teach", label: "Mentors", icon: Users },
-  { href: "/portfolio", label: "Portfolio", icon: Layers },
-  { href: "/jobs", label: "Jobs", icon: Briefcase },
+  { href: "/course", label: "DesignUp", icon: GraduationCap },
 ];
 
 export function Sidebar() {

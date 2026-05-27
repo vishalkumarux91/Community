@@ -101,6 +101,21 @@ export const Comment = ({ className }: IconProps) => (
   </svg>
 );
 
+export const GraduationCap = ({ className }: IconProps) => (
+  <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
+    <path d="M2.5 7.5 10 4l7.5 3.5L10 11 2.5 7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <path d="M5.5 9v4c0 1 2 2 4.5 2s4.5-1 4.5-2V9M17.5 7.5v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const HelpCircle = ({ className }: IconProps) => (
+  <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
+    <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M7.8 7.7a2.2 2.2 0 0 1 4.3.7c0 1.5-2.1 1.8-2.1 3.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="10" cy="14.4" r="0.6" fill="currentColor" stroke="currentColor" strokeWidth="0.6" />
+  </svg>
+);
+
 export const Bookmark = ({ className }: IconProps) => (
   <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
     <path d="M5 3h10v14l-5-3-5 3V3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />

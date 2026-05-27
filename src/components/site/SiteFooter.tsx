@@ -6,10 +6,9 @@ const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
   {
     title: "Learn",
     items: [
+      ["DesignUp", "/designup", true],
       ["Tools", "/tools"],
-      ["Topics", "/learn", true],
-      ["Mentors", "/teach"],
-      ["Portfolio", "/portfolio/builder"],
+      ["Topics", "/learn"],
     ],
   },
   {
@@ -17,8 +16,6 @@ const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
     items: [
       ["Feed", "/community"],
       ["Critique", "/community"],
-      ["Become a mentor", "/teach/become-mentor"],
-      ["Jobs", "/jobs"],
     ],
   },
   {
@@ -34,14 +31,14 @@ const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-stroke-faint bg-bg-raised text-text-strong">
-      {/* Warm radial wash */}
+    <footer className="relative isolate overflow-hidden text-text-strong">
+      {/* Warm radial wash — subtle, blends into the page background */}
       <div
         aria-hidden
         className="absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(120% 80% at 50% 110%, color-mix(in srgb, var(--accent-orange) 38%, transparent) 0%, transparent 60%), radial-gradient(80% 60% at 50% 120%, color-mix(in srgb, var(--accent-yellow) 28%, transparent) 0%, transparent 65%)",
+            "radial-gradient(120% 80% at 50% 120%, color-mix(in srgb, var(--accent-orange) 16%, transparent) 0%, transparent 58%), radial-gradient(80% 60% at 50% 128%, color-mix(in srgb, var(--accent-pink) 12%, transparent) 0%, transparent 62%)",
         }}
       />
       {/* Tiny dot grid */}

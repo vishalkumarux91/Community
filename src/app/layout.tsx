@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Figtree } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -23,10 +9,16 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const figtree = Figtree({
+  subsets: ["latin"],
+  variable: "--font-figtree",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Opencanvas — A calmer place to grow as a designer",
   description:
-    "Curated tools, mentor-led topics, honest critique, and portfolio building — in one quiet community for UI/UX designers.",
+    "Curated tools, guided topics, and honest critique — in one quiet community for UI/UX designers.",
 };
 
 // Sets data-theme before paint to avoid the wrong-theme flash on first load.
@@ -47,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
+      className={`${jetbrainsMono.variable} ${figtree.variable}`}
       suppressHydrationWarning
     >
       <head>

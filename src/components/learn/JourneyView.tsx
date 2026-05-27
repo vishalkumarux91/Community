@@ -90,7 +90,7 @@ export function JourneyView({ topic }: { topic: Topic }) {
           <div className="border-b border-stroke-faint px-6 py-4">
             <p className="text-xs uppercase tracking-wider text-text-muted">{level} pipeline</p>
             <div className="mt-3 flex items-center gap-3">
-              <div className="h-1.5 flex-1 rounded-full bg-white/[0.06]">
+              <div className="h-1.5 flex-1 rounded-full bg-stroke-weak">
                 <div
                   className="h-full rounded-full bg-accent-orange transition-all"
                   style={{ width: `${progress}%` }}
@@ -119,7 +119,7 @@ export function JourneyView({ topic }: { topic: Topic }) {
                     onClick={() => setSelectedId(step.id)}
                     className={cn(
                       "relative flex w-full gap-3 rounded-xl px-3 py-3 text-left transition-colors",
-                      isSelected ? "bg-white/[0.06]" : "hover:bg-white/[0.03]",
+                      isSelected ? "bg-bg-card-hover" : "hover:bg-bg-card-hover",
                     )}
                   >
                     <span

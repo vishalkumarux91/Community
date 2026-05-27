@@ -77,7 +77,7 @@ export default function CommunityPage() {
               ["Career & switching", "/community?tag=career"],
             ].map(([label, href]) => (
               <li key={label}>
-                <Link href={href} className="flex items-center justify-between rounded-lg px-2 py-1.5 text-text-weak hover:bg-white/[0.04] hover:text-text-strong">
+                <Link href={href} className="flex items-center justify-between rounded-lg px-2 py-1.5 text-text-weak hover:bg-bg-card-hover hover:text-text-strong">
                   # {label}
                 </Link>
               </li>
@@ -86,29 +86,12 @@ export default function CommunityPage() {
         </Card>
 
         <Card className="space-y-3 p-5" hover={false}>
-          <h3 className="font-display text-base font-semibold">Live this week</h3>
-          <div className="space-y-2 text-sm text-text-weak">
-            <div>
-              <p className="font-medium text-text-strong">Live portfolio review</p>
-              <p className="text-xs">Tue 6 PM · Aanya Sharma</p>
-            </div>
-            <div>
-              <p className="font-medium text-text-strong">Mock interview clinic</p>
-              <p className="text-xs">Fri 7 PM · Reena Kapoor</p>
-            </div>
-          </div>
-          <Link href="/teach" className="text-xs text-accent-orange">
-            See all sessions →
-          </Link>
-        </Card>
-
-        <Card className="space-y-3 p-5" hover={false}>
           <h3 className="font-display text-base font-semibold">Community rules</h3>
           <ol className="list-inside list-decimal space-y-1 text-xs text-text-weak">
             <li>Critique the work, not the person.</li>
             <li>Add context to portfolio reviews.</li>
             <li>No recruitment-only posts.</li>
-            <li>Mark mentor responses respectfully.</li>
+            <li>Mark helpful responses respectfully.</li>
           </ol>
         </Card>
       </aside>
