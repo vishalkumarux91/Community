@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 
 /**
- * localStorage-backed completion set for the DesignUp course. One flat set of
+ * localStorage-backed completion set for the Level Up course. One flat set of
  * namespaced ids covers lessons, capstones, and "The Bar" checklist ticks, so
  * progress persists across reloads without a backend.
  *

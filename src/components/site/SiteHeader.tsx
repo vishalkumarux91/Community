@@ -31,8 +31,8 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link
-            href="/designup"
-            aria-label="DesignUp course"
+            href="/levelup"
+            aria-label="Level Up course"
             className="wave-btn inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:brightness-105"
             style={{
               background:
@@ -43,13 +43,13 @@ export function SiteHeader() {
           >
             <GraduationCap className="size-4" />
             <span aria-hidden className="inline-flex">
-              {"DesignUp".split("").map((ch, i) => (
+              {"Level Up".split("").map((ch, i) => (
                 <span
                   key={i}
                   className="wave-letter"
                   style={{ animationDelay: `${i * 0.04}s` }}
                 >
-                  {ch}
+                  {ch === " " ? " " : ch}
                 </span>
               ))}
             </span>

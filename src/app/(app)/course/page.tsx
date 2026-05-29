@@ -15,7 +15,7 @@ import {
   type ResourceKind,
   type LessonTable,
   type LessonSteps,
-} from "@/data/designup";
+} from "@/data/levelup";
 import {
   useCourseProgress,
   lessonKey,

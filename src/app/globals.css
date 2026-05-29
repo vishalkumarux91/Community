@@ -240,7 +240,7 @@ body {
   animation-play-state: paused;
 }
 
-/* ===== DesignUp nav button — letters ripple in a wave on hover ===== */
+/* ===== Level Up nav button — letters ripple in a wave on hover ===== */
 @keyframes wave-letter {
   0%, 100% { transform: translateY(0); }
   35% { transform: translateY(-38%); }

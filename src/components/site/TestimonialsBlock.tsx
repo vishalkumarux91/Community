@@ -85,7 +85,7 @@ export function TestimonialsBlock() {
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-2.5">
             <Link
-              href="/designup"
+              href="/levelup"
               className="inline-flex items-center rounded-full bg-fill-strong px-5 py-2.5 text-sm font-medium text-text-inverse-strong transition-opacity hover:opacity-90"
             >
               Become a member

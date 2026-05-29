@@ -5,15 +5,15 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { Reveals } from "@/components/site/Reveals";
 import { Container } from "@/components/ui/Container";
 import { ArrowRight, Check } from "@/components/ui/Icons";
-import { COURSE_META, MARKETING, TRACKS } from "@/data/designup";
+import { COURSE_META, MARKETING, TRACKS } from "@/data/levelup";
 
 export const metadata: Metadata = {
-  title: "DesignUp — go from course-finished to job-ready",
+  title: "Level Up — go from course-finished to job-ready",
   description:
     "A self-paced course for designers. Three tracks — Craft, Collaboration, Career — that close the gap between finishing a course and being someone a product team can hand a real feature to. Free with an account.",
 };
 
-export default function DesignUpPage() {
+export default function LevelUpPage() {
   const { hero, why, tracksHeading, trackCards, value, howItWorks, finalCta } =
     MARKETING;
 

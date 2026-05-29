@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
-// DesignUp — single content source.
+// Level Up — single content source.
 //
-// Consumed by BOTH the public marketing page (/designup) and the member
+// Consumed by BOTH the public marketing page (/levelup) and the member
 // course view (/course), so curriculum + marketing copy live in one place.
 //
 // Lesson content is the team-provided field-guide text for the three tracks
@@ -85,7 +85,7 @@ export type Track = {
 };
 
 export const COURSE_META = {
-  name: "DesignUp",
+  name: "Level Up",
   tagline: "Go from course-finished to job-ready.",
   meta: "Free with an account · 3 tracks · ~6 weeks each · self-paced",
   // TODO(team): confirm CTAs point to your real sign-up / login flow.
@@ -106,7 +106,7 @@ export const LESSON_RHYTHM: { label: string; text: string }[] = [
 export const MARKETING = {
   hero: {
     eyebrow: "A self-paced course for designers",
-    headline: "DesignUp",
+    headline: "Level Up",
     subhead:
       "You finished the course. You can open Figma and make a screen look decent. This is the part nobody warned you about: the gap between that and being someone a product team can hand a real feature to. Three self-paced tracks close it — in the order it actually happens.",
     primaryCta: "Start free",
@@ -114,7 +114,7 @@ export const MARKETING = {
   },
   why: {
     heading: "Why it exists",
-    body: "A course teaches you the design process — research, wireframes, making a screen look decent. It rarely teaches what comes next: the craft that shows up the moment your work meets engineers, real data, and other people's opinions. That gap is why genuinely skilled designers send a hundred applications and hear nothing. DesignUp closes it.",
+    body: "A course teaches you the design process — research, wireframes, making a screen look decent. It rarely teaches what comes next: the craft that shows up the moment your work meets engineers, real data, and other people's opinions. That gap is why genuinely skilled designers send a hundred applications and hear nothing. Level Up closes it.",
   },
   tracksHeading: "Three tracks. One path to job-ready.",
   trackCards: [

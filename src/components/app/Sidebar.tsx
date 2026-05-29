@@ -19,7 +19,7 @@ type NavItem = {
 const NAV: NavItem[] = [
   { href: "/community", label: "Community", icon: Megaphone },
   { href: "/learn", label: "Learn", icon: Compass },
-  { href: "/course", label: "DesignUp", icon: GraduationCap },
+  { href: "/course", label: "Level Up", icon: GraduationCap },
 ];
 
 export function Sidebar() {

@@ -6,7 +6,7 @@ const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
   {
     title: "Learn",
     items: [
-      ["DesignUp", "/designup", true],
+      ["Level Up", "/levelup", true],
       ["Tools", "/tools"],
       ["Topics", "/learn"],
     ],
