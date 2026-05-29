@@ -71,7 +71,7 @@ export function OpencanvasHero() {
 
           <h1 className="font-display reveal relative z-[1] mx-auto max-w-[840px] text-[46px] leading-[1.04] text-text-strong [text-wrap:balance] md:text-[76px]">
             Grow into the{" "}
-            <span style={{ color: "var(--accent-purple)" }}>Designer</span> you
+            <span style={{ color: "var(--accent-orange)" }}>Designer</span> you
             want to be.
           </h1>
 
@@ -83,8 +83,13 @@ export function OpencanvasHero() {
           <div className="reveal relative z-[1] mt-10 flex items-center justify-center gap-3">
             <Link
               href="/auth/sign-up"
-              className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-medium text-text-inverse-strong transition-all hover:-translate-y-0.5 hover:opacity-95"
-              style={{ background: "var(--accent-purple)" }}
+              className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold text-white transition-all hover:-translate-y-0.5 hover:brightness-105"
+              style={{
+                background:
+                  "linear-gradient(180deg, color-mix(in srgb, var(--accent-orange) 72%, white) 0%, var(--accent-orange) 50%, color-mix(in srgb, var(--accent-orange) 82%, black) 100%)",
+                boxShadow:
+                  "0 12px 28px -6px color-mix(in srgb, var(--accent-orange) 60%, transparent), 0 2px 6px -2px color-mix(in srgb, var(--accent-orange) 50%, transparent), inset 0 1px 0 color-mix(in srgb, white 48%, transparent), inset 0 -1px 1px color-mix(in srgb, black 20%, transparent)",
+              }}
             >
               Join the community <ArrowRight className="size-4" />
             </Link>
