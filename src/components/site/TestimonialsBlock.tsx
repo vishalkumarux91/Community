@@ -18,14 +18,14 @@ const CARDS: Card[] = [
   },
   {
     quote:
-      "The mentor sessions paid for themselves in week one. Honest, focused feedback I couldn't get anywhere else — not from Discord, not from Twitter.",
+      "The critique threads paid for themselves in week one. Honest, focused feedback I couldn't get anywhere else — not from Discord, not from Twitter.",
     name: "Aditya K.",
     role: "Product Designer · Razorpay",
     tone: "var(--accent-blue)",
   },
   {
     quote:
-      "I broke into product design after six months here. The portfolio builder + critique loop is the closest thing to a design school I've found online.",
+      "I broke into product design after six months here. The topic paths + critique loop are the closest thing to a design school I've found online.",
     name: "Riya I.",
     role: "Designer · Cred",
     tone: "var(--accent-sage)",
@@ -59,53 +59,43 @@ function avatarBg(tone: string) {
 
 export function TestimonialsBlock() {
   return (
-    <section className="border-b border-stroke-faint py-28">
+    <section className="py-28">
       <Container>
-        <div className="mb-14 grid items-end gap-10 md:grid-cols-[1fr_1.4fr] md:gap-20">
-          <div className="reveal">
-            <h2 className="font-display m-0 text-[132px] leading-[0.9] tracking-[-0.03em] text-text-strong md:text-[168px]">
-              1,200
-              <i className="italic text-accent-orange">+</i>
-            </h2>
-            <p className="mt-3 max-w-[320px] text-base text-text-weak">
-              Designers learning, shipping, and growing together — across
-              product teams worldwide.
-            </p>
+        <div className="reveal mx-auto mb-14 flex max-w-[600px] flex-col items-center text-center">
+          <div className="flex items-center" aria-hidden>
+            {(["var(--accent-orange)", "var(--accent-blue)", "var(--accent-sage)", "var(--accent-yellow)", "var(--accent-purple)"] as const).map(
+              (tone, i) => (
+                <span
+                  key={i}
+                  className="-ml-2.5 size-[38px] shrink-0 rounded-full first:ml-0"
+                  style={{
+                    background: avatarBg(tone),
+                    border: "2px solid var(--bg-sunken)",
+                  }}
+                />
+              ),
+            )}
           </div>
-          <div className="reveal flex flex-col items-start gap-4">
-            <div className="flex items-center" aria-hidden>
-              {(["var(--accent-orange)", "var(--accent-blue)", "var(--accent-sage)", "var(--accent-yellow)"] as const).map(
-                (tone, i) => (
-                  <span
-                    key={i}
-                    className="-ml-2.5 size-[38px] shrink-0 rounded-full first:ml-0"
-                    style={{
-                      background: avatarBg(tone),
-                      border: "2px solid var(--bg-sunken)",
-                    }}
-                  />
-                ),
-              )}
-            </div>
-            <p className="font-display m-0 max-w-[540px] text-[18px] leading-[1.45] tracking-[-0.01em] text-text-strong md:text-[22px]">
-              Don&rsquo;t just take our word for it — hear from designers who
-              joined to find a quieter place to grow, get honest critique, and
-              ship better work.
-            </p>
-            <div className="mt-1.5 flex flex-wrap gap-2.5">
-              <Link
-                href="/auth/sign-up"
-                className="inline-flex items-center rounded-full bg-fill-strong px-4.5 py-2.5 text-sm font-medium text-text-inverse-strong transition-opacity hover:opacity-90"
-              >
-                Become a member
-              </Link>
-              <Link
-                href="/community"
-                className="inline-flex items-center rounded-full border border-stroke-weak bg-bg-card px-4.5 py-2.5 text-sm font-medium text-text-strong transition-colors hover:bg-bg-card-hover"
-              >
-                Read success stories
-              </Link>
-            </div>
+          <h2 className="font-display mt-6 text-[40px] leading-[1.05] tracking-[-0.02em] text-text-strong md:text-[56px]">
+            Designers, in their own words.
+          </h2>
+          <p className="mt-4 max-w-[480px] text-[16px] leading-relaxed text-text-weak md:text-[18px]">
+            Honest notes from members who joined to learn, get real critique,
+            and ship work they&rsquo;re proud of.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-2.5">
+            <Link
+              href="/levelup"
+              className="inline-flex items-center rounded-full bg-fill-strong px-5 py-2.5 text-sm font-medium text-text-inverse-strong transition-opacity hover:opacity-90"
+            >
+              Become a member
+            </Link>
+            <Link
+              href="/community"
+              className="inline-flex items-center rounded-full border border-stroke-weak bg-bg-card px-5 py-2.5 text-sm font-medium text-text-strong transition-colors hover:bg-bg-card-hover"
+            >
+              Read success stories
+            </Link>
           </div>
         </div>
 

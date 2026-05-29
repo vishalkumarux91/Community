@@ -13,18 +13,16 @@ const ROLES = [
   { id: "career-switch", label: "Career switcher", helper: "Coming from graphic, web, or another field." },
   { id: "junior", label: "Junior designer", helper: "0–2 years in product design." },
   { id: "mid", label: "Mid-level / senior", helper: "3+ years, leveling up." },
-  { id: "lead", label: "Lead / mentor", helper: "Want to teach and contribute." },
+  { id: "lead", label: "Lead designer", helper: "Setting direction and raising the bar." },
 ];
 
 const GOALS = [
-  "Find my first job",
-  "Build a portfolio",
   "Get better at Figma",
   "Learn design systems",
   "Switch from graphic design",
   "Prep for big-tech interviews",
-  "Find a mentor",
-  "Teach what I know",
+  "Sharpen my critique skills",
+  "Stay current with AI in design",
 ];
 
 const TOOLS = ["Figma", "Framer", "Webflow", "Notion", "Midjourney", "ChatGPT", "Maze", "Zeplin"];
@@ -57,7 +55,7 @@ export default function OnboardingPage() {
               <span
                 className={cn(
                   "h-1.5 flex-1 rounded-full transition-colors",
-                  i <= step ? "bg-accent-orange" : "bg-white/[0.06]",
+                  i <= step ? "bg-accent-orange" : "bg-stroke-weak",
                 )}
               />
             </li>

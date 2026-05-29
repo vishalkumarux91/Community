@@ -8,7 +8,7 @@ export function Topbar() {
         <Search className="size-4 text-text-muted" />
         <input
           className="h-full flex-1 bg-transparent text-sm placeholder:text-text-muted focus:outline-none"
-          placeholder="Search tools, journeys, mentors, posts…"
+          placeholder="Search tools, journeys, posts…"
         />
         <kbd className="hidden rounded border border-stroke-weak px-1.5 py-0.5 text-[11px] text-text-muted md:inline-block">
           ⌘K

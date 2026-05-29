@@ -20,7 +20,7 @@ export function Tabs<T extends string>({
     <div
       role="tablist"
       className={cn(
-        "inline-flex rounded-full border border-stroke-weak bg-white/[0.03] p-1",
+        "inline-flex rounded-full border border-stroke-weak bg-bg-card-hover p-1",
         className,
       )}
     >

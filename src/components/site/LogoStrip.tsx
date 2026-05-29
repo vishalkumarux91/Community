@@ -16,7 +16,7 @@ const BRANDS: { name: string; svg: React.JSX.Element }[] = [
     svg: (
       <>
         <circle cx="16" cy="16" r="12" />
-        <circle cx="16" cy="16" r="4" fill="var(--bg-raised)" />
+        <circle cx="16" cy="16" r="4" fill="var(--bg-sunken)" />
       </>
     ),
   },
@@ -57,7 +57,7 @@ export function LogoStrip() {
         <span
           key={i}
           aria-hidden={i >= BRANDS.length}
-          className="font-display inline-flex items-center gap-2.5 whitespace-nowrap text-[22px] tracking-[-0.005em] text-text-weak transition-colors hover:text-text-strong"
+          className="inline-flex items-center gap-2.5 whitespace-nowrap text-[20px] font-semibold tracking-[-0.01em] text-text-weak transition-colors hover:text-text-strong"
         >
           <svg
             viewBox="0 0 32 32"
@@ -74,7 +74,7 @@ export function LogoStrip() {
   );
 
   return (
-    <section className="group:hover-pause relative overflow-hidden border-y border-stroke-faint bg-bg-raised py-16">
+    <section className="group:hover-pause relative overflow-hidden py-16">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"

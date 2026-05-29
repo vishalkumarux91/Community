@@ -6,9 +6,9 @@ import { Check } from "@/components/ui/Icons";
 
 const PERKS = [
   "AI-curated learning journeys",
-  "Live mentor sessions & critique",
-  "AI portfolio builder",
-  "Job-prep tracks built in",
+  "Honest critique from the community",
+  "Curated tools & guided topics",
+  "A calm, friendly place to grow",
 ];
 
 export default function SignUpPage() {
