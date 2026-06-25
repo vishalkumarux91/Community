@@ -1,31 +1,30 @@
 import type { Metadata } from "next";
-import {
-  Inter_Tight,
-  Instrument_Serif,
-  Fraunces,
-  JetBrains_Mono,
-} from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const interTight = Inter_Tight({
+/**
+ * Replicate-inspired font stack.
+ *
+ * Inter substitutes for basier-square (square sans) on body + UI.
+ * Bricolage Grotesque substitutes for rb-freigeist-neue (heavy
+ * condensed grotesque) on display sizes — this is the official
+ * fallback called out in DESIGN.md. JetBrains Mono carries code.
+ *
+ * Both Freigeist + Basier Square are licensed — the substitutes here
+ * are the closest free Google Fonts; swap in the real licensed
+ * families if RPS adds them to the project.
+ */
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter-tight",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  weight: ["500", "600", "700"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
@@ -37,9 +36,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Opencanvas — Level up your design craft, together.",
+  title: "Opencanvas — Become industry-ready. Ship with AI.",
   description:
-    "A members-only mini-course on the practical stuff design school skips — plus curated tools, mentor-led topics, and honest critique in one quiet community.",
+    "A community for early-career designers. Live workshops, real assignments, honest assessments from senior designers — plus a tidy library of playbooks and resources.",
 };
 
 // Sets data-theme before paint to avoid the wrong-theme flash on first load.
@@ -60,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${interTight.variable} ${instrumentSerif.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${bricolage.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

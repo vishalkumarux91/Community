@@ -32,3 +32,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# editor backup
+index.html.bak

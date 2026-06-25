@@ -17,13 +17,13 @@ const ROLES = [
 ];
 
 const GOALS = [
-  "Earn the Level Up certificate",
+  "Become industry-ready",
+  "Ship faster with AI",
   "Get better at Figma",
   "Learn design systems",
   "Switch from graphic design",
   "Sharpen design critique",
-  "Find a mentor",
-  "Get priority for RPS Studio jobs",
+  "Build a stronger portfolio",
   "Teach what I know",
 ];
 
@@ -44,14 +44,11 @@ export default function OnboardingPage() {
   return (
     <div className="grid min-h-dvh place-items-center bg-bg-sunken px-6 py-12">
       <div className="w-full max-w-[640px] space-y-8">
-        <Link href="/" className="flex items-center gap-3">
-          <span
-            className="font-display grid size-8 place-items-center rounded-[10px] text-[18px] italic"
-            style={{ background: "var(--rainbow)", color: "#0e0e0f", fontWeight: 500 }}
-          >
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="grid size-8 place-items-center rounded-[12px] bg-ink text-[18px] font-medium text-on-primary">
             O
           </span>
-          <span className="text-[15px] font-semibold tracking-tight">Opencanvas</span>
+          <span className="text-[15px] font-medium tracking-tight text-ink">Opencanvas</span>
         </Link>
 
         <ol className="flex items-center gap-2">
@@ -60,7 +57,7 @@ export default function OnboardingPage() {
               <span
                 className={cn(
                   "h-1.5 flex-1 rounded-full transition-colors",
-                  i <= step ? "bg-accent-orange" : "bg-white/[0.06]",
+                  i <= step ? "bg-signature-coral" : "bg-surface-strong",
                 )}
               />
             </li>
@@ -175,7 +172,7 @@ export default function OnboardingPage() {
                 </p>
               </header>
               <Link
-                href="/community"
+                href="/forum"
                 className="block rounded-full bg-fill-strong py-2.5 text-center text-sm font-medium text-text-inverse-strong"
               >
                 Go to the community

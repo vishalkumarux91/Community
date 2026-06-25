@@ -70,6 +70,18 @@ export const Calendar = ({ className }: IconProps) => (
   </svg>
 );
 
+export const Book = ({ className }: IconProps) => (
+  <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
+    <path d="M4 4h7a3 3 0 0 1 3 3v10H7a3 3 0 0 1-3-3V4Zm12 3a3 3 0 0 0-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+  </svg>
+);
+
+export const Folder = ({ className }: IconProps) => (
+  <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
+    <path d="M3 5.5h5l1.5 2H17v8.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+  </svg>
+);
+
 export const Clock = ({ className }: IconProps) => (
   <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden>
     <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.5" />
