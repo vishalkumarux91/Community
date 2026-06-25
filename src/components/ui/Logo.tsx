@@ -3,9 +3,9 @@ import { cn } from "@/lib/cn";
 /**
  * Opencanvas monogram + wordmark.
  *
- * The monogram is a soft-rounded tile rendering an italic serif "O" — keeps
- * the editorial feel of the design throughout. Both bits are theme-aware
- * because they resolve through fill-strong / text-inverse-strong tokens.
+ * Hot-orange round monogram with a heavy "O" — Replicate's "stamp,
+ * not a notification" rule applied to the brand mark. Pill-shaped
+ * per the system's friendly-precision radius.
  */
 export function Logo({
   size = "md",
@@ -24,15 +24,15 @@ export function Logo({
       <span
         aria-hidden
         className={cn(
-          "grid place-items-center rounded-lg bg-fill-strong italic text-text-inverse-strong",
-          "font-display",
+          "grid place-items-center rounded-full bg-primary text-on-primary",
+          "font-display font-bold",
           monogramSize,
         )}
       >
         O
       </span>
       {showWordmark && (
-        <span className="text-[15px] font-semibold tracking-tight">
+        <span className="font-display text-[17px] font-bold tracking-[-0.02em] text-ink">
           Opencanvas
         </span>
       )}

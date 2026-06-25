@@ -13,16 +13,18 @@ const ROLES = [
   { id: "career-switch", label: "Career switcher", helper: "Coming from graphic, web, or another field." },
   { id: "junior", label: "Junior designer", helper: "0–2 years in product design." },
   { id: "mid", label: "Mid-level / senior", helper: "3+ years, leveling up." },
-  { id: "lead", label: "Lead designer", helper: "Setting direction and raising the bar." },
+  { id: "lead", label: "Lead / mentor", helper: "Want to teach and contribute." },
 ];
 
 const GOALS = [
+  "Become industry-ready",
+  "Ship faster with AI",
   "Get better at Figma",
   "Learn design systems",
   "Switch from graphic design",
-  "Prep for big-tech interviews",
-  "Sharpen my critique skills",
-  "Stay current with AI in design",
+  "Sharpen design critique",
+  "Build a stronger portfolio",
+  "Teach what I know",
 ];
 
 const TOOLS = ["Figma", "Framer", "Webflow", "Notion", "Midjourney", "ChatGPT", "Maze", "Zeplin"];
@@ -42,11 +44,11 @@ export default function OnboardingPage() {
   return (
     <div className="grid min-h-dvh place-items-center bg-bg-sunken px-6 py-12">
       <div className="w-full max-w-[640px] space-y-8">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="font-display grid size-8 place-items-center rounded-lg bg-fill-strong text-[18px] italic text-text-inverse-strong">
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="grid size-8 place-items-center rounded-[12px] bg-ink text-[18px] font-medium text-on-primary">
             O
           </span>
-          <span className="text-[15px] font-semibold tracking-tight">Opencanvas</span>
+          <span className="text-[15px] font-medium tracking-tight text-ink">Opencanvas</span>
         </Link>
 
         <ol className="flex items-center gap-2">
@@ -55,7 +57,7 @@ export default function OnboardingPage() {
               <span
                 className={cn(
                   "h-1.5 flex-1 rounded-full transition-colors",
-                  i <= step ? "bg-accent-orange" : "bg-stroke-weak",
+                  i <= step ? "bg-signature-coral" : "bg-surface-strong",
                 )}
               />
             </li>
@@ -170,7 +172,7 @@ export default function OnboardingPage() {
                 </p>
               </header>
               <Link
-                href="/community"
+                href="/forum"
                 className="block rounded-full bg-fill-strong py-2.5 text-center text-sm font-medium text-text-inverse-strong"
               >
                 Go to the community

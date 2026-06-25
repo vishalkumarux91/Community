@@ -1,122 +1,108 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { ArrowRight } from "@/components/ui/Icons";
 
-const COLUMNS: { title: string; items: [string, string, boolean?][] }[] = [
-  {
-    title: "Learn",
-    items: [
-      ["Level Up", "/levelup", true],
-      ["Tools", "/tools"],
-      ["Topics", "/learn"],
-    ],
-  },
+const COLUMNS: { title: string; items: [string, string][] }[] = [
   {
     title: "Community",
     items: [
-      ["Feed", "/community"],
-      ["Critique", "/community"],
+      ["Workshops", "/workshops"],
+      ["Playbooks", "/playbooks"],
+      ["Resources", "/resources"],
     ],
   },
   {
-    title: "Company",
+    title: "Account",
     items: [
-      ["About", "#"],
-      ["Changelog", "#"],
-      ["Privacy", "#"],
-      ["Terms", "#"],
+      ["Sign in", "/auth/sign-in"],
+      ["Sign up", "/auth/sign-up"],
     ],
   },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="relative isolate overflow-hidden text-text-strong">
-      {/* Warm radial wash — subtle, blends into the page background */}
-      <div
-        aria-hidden
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(120% 80% at 50% 120%, color-mix(in srgb, var(--accent-orange) 16%, transparent) 0%, transparent 58%), radial-gradient(80% 60% at 50% 128%, color-mix(in srgb, var(--accent-pink) 12%, transparent) 0%, transparent 62%)",
-        }}
-      />
-      {/* Tiny dot grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] opacity-60"
-        style={{
-          backgroundImage:
-            "radial-gradient(color-mix(in srgb, var(--text-strong) 5%, transparent) 1px, transparent 1px)",
-          backgroundSize: "4px 4px",
-        }}
-      />
-
-      <Container className="relative z-[2]">
-        <div className="grid gap-12 py-24 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:pb-16 md:pt-24">
+    <footer className="border-t border-hairline bg-canvas">
+      {/* Cream callout banner — Replicate uses a warm-canvas CTA before
+           the deep footer, not a gray one. */}
+      <Container className="pt-24 pb-16">
+        <div className="grid items-center gap-6 rounded-[16px] bg-surface-bone p-10 md:grid-cols-[1.4fr_auto] md:p-12">
           <div>
-            <h3 className="m-0 font-display text-[44px] leading-none tracking-[-0.01em]">
-              Follow what{" "}
-              <i className="italic text-accent-orange">we&rsquo;re building</i>
+            <h3 className="font-display m-0 text-[36px] font-bold leading-[1.05] tracking-[-0.025em] text-ink md:text-[48px]">
+              Start growing with Opencanvas.
             </h3>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-text-weak">
-              Quiet weekly notes — new mentors, fresh topics, deals on tools.
+            <p className="mt-3 max-w-md text-[15px] leading-[1.55] text-body">
+              Free to join. Workshops, an honest community, and assessments
+              from senior designers.
             </p>
-            <Link
-              href="/auth/sign-up"
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-fill-strong bg-fill-strong px-5 py-2.5 text-sm font-medium text-text-inverse-strong transition-all hover:-translate-y-px hover:opacity-90"
-            >
-              Become a member <ArrowRight className="size-3.5" />
-            </Link>
           </div>
-
-          {COLUMNS.map((col) => (
-            <div key={col.title}>
-              <h4 className="mb-3.5 text-[11px] font-medium uppercase tracking-[0.18em] text-text-muted">
-                {col.title}
-              </h4>
-              <ul className="flex flex-col gap-2.5">
-                {col.items.map(([label, href, isNew]) => (
-                  <li key={label}>
-                    <Link
-                      href={href}
-                      className="inline-flex items-center gap-2 text-[15px] text-text-strong opacity-85 transition-opacity hover:opacity-100"
-                    >
-                      {label}
-                      {isNew && (
-                        <span
-                          className="rounded-full px-1.5 py-0.5 text-[10px] tracking-wider text-accent-orange"
-                          style={{
-                            background:
-                              "color-mix(in srgb, var(--accent-orange) 22%, transparent)",
-                          }}
-                        >
-                          NEW
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid gap-4 border-t border-stroke-weak py-7 font-mono text-[12.5px] text-text-weak md:grid-cols-2 md:pb-10">
-          <div>
-            <span className="mb-1 block text-[11px] uppercase tracking-[0.16em] text-text-muted">
-              © Opencanvas
-            </span>
-            <span>{new Date().getFullYear()} · Made with care, in public.</span>
-          </div>
-          <div>
-            <span className="mb-1 block text-[11px] uppercase tracking-[0.16em] text-text-muted">
-              Instagram
-            </span>
-            @opencanvas.community
-          </div>
+          <Link
+            href="/auth/sign-up"
+            className="justify-self-start rounded-full bg-primary px-6 py-3 text-[15px] font-semibold text-on-primary transition-colors hover:bg-[color:var(--primary-deep)]"
+          >
+            Sign up for free
+          </Link>
         </div>
       </Container>
+
+      {/* Deep-ink footer per Replicate's `footer` component spec. */}
+      <div className="bg-surface-deep text-on-dark">
+        <Container className="pt-16">
+          <div className="grid gap-12 pb-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+            <div>
+              <h4 className="font-display m-0 text-[24px] font-bold leading-[1.15] tracking-[-0.015em] text-on-dark">
+                Follow what we&rsquo;re building.
+              </h4>
+              <p
+                className="mt-3 max-w-xs text-[14px] leading-[1.55]"
+                style={{ color: "var(--on-dark-mute)" }}
+              >
+                Quiet weekly notes — new workshops, fresh playbooks, picked
+                articles.
+              </p>
+              <Link
+                href="/auth/sign-up"
+                className="mt-5 inline-flex rounded-full border border-[color:var(--divider-dark)] px-4 py-2 text-[14px] font-semibold text-on-dark transition-colors hover:bg-white/5"
+              >
+                Become a member
+              </Link>
+            </div>
+
+            {COLUMNS.map((col) => (
+              <div key={col.title}>
+                <h4
+                  className="mb-3.5 text-[12px] font-semibold uppercase tracking-[0.12em]"
+                  style={{ color: "var(--on-dark-mute)" }}
+                >
+                  {col.title}
+                </h4>
+                <ul className="flex flex-col gap-2.5">
+                  {col.items.map(([label, href]) => (
+                    <li key={label}>
+                      <Link
+                        href={href}
+                        className="text-[14px] text-on-dark transition-opacity hover:opacity-80"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="grid gap-4 border-t py-7 text-[13px] md:grid-cols-2 md:pb-10"
+            style={{
+              color: "var(--on-dark-mute)",
+              borderColor: "var(--divider-dark)",
+            }}
+          >
+            <div>© {new Date().getFullYear()} Opencanvas · Made with care, in public.</div>
+            <div className="md:text-right">@opencanvas.community</div>
+          </div>
+        </Container>
+      </div>
     </footer>
   );
 }

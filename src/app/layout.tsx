@@ -1,6 +1,32 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Figtree } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+/**
+ * Replicate-inspired font stack.
+ *
+ * Inter substitutes for basier-square (square sans) on body + UI.
+ * Bricolage Grotesque substitutes for rb-freigeist-neue (heavy
+ * condensed grotesque) on display sizes — this is the official
+ * fallback called out in DESIGN.md. JetBrains Mono carries code.
+ *
+ * Both Freigeist + Basier Square are licensed — the substitutes here
+ * are the closest free Google Fonts; swap in the real licensed
+ * families if RPS adds them to the project.
+ */
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -9,16 +35,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const figtree = Figtree({
-  subsets: ["latin"],
-  variable: "--font-figtree",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Opencanvas — A calmer place to grow as a designer",
+  title: "Opencanvas — Become industry-ready. Ship with AI.",
   description:
-    "Curated tools, guided topics, and honest critique — in one quiet community for UI/UX designers.",
+    "A community for early-career designers. Live workshops, real assignments, honest assessments from senior designers — plus a tidy library of playbooks and resources.",
 };
 
 // Sets data-theme before paint to avoid the wrong-theme flash on first load.
@@ -39,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jetbrainsMono.variable} ${figtree.variable}`}
+      className={`${inter.variable} ${bricolage.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -1,91 +1,166 @@
 @import "tailwindcss";
 
 /*
- * Opencanvas design tokens — Apple-style white + grey surfaces with vivid
- * color accents, swapped via data-theme on <html>. Light is the default.
- * Dark applies via html[data-theme="dark"] or prefers-color-scheme when no
- * choice is set.
+ * Opencanvas — Replicate-inspired brand tokens.
+ *
+ * Warm cream canvas (#f9f7f3) replaces white; hot orange (#ea2804) is
+ * the load-bearing accent reserved for the primary CTA, hero bands,
+ * and inline link color. Display type is a Freigeist-style heavy
+ * grotesque (Space Grotesk substitutes since Freigeist is licensed);
+ * body + UI runs on a square sans (Inter substitutes for basier-square).
+ * Interactive surfaces — buttons, inputs, tags, badges — are all
+ * pill-shaped per the system's "friendly precision" rule.
+ *
+ * Source: DESIGN.md at the project root (npx getdesign@latest add replicate).
  */
 :root {
-  --bg-sunken: #ffffff;
-  --bg-raised: #f5f5f7;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f1f4;
-  --bg-deep: #1d1d1f;
+  /* Brand + accents */
+  --primary: #ea2804;
+  --primary-deep: #c01f00;
+  --on-primary: #ffffff;
+  --hero-warm: #ea2804;
+  --hero-glow: #ff6a3d;
+  --hero-pink: #f4a8a0;
+  --badge-success: #2b9a66;
+  --link: #ea2804;
 
-  --text-strong: #1d1d1f;
-  --text-weak: #4d4d52;
-  --text-muted: #86868b;
-  --text-disabled: #b8b8bd;
-  --text-inverse-strong: #ffffff;
+  /* Ink + text */
+  --ink: #202020;
+  --body: #3a3a3a;
+  --charcoal: #575757;
+  --mute: #646464;
+  --ash: #8d8d8d;
+  --stone: #bbbbbb;
+  --on-dark: #fcfcfc;
+  --on-dark-mute: rgba(252, 252, 252, 0.72);
 
-  --stroke-strong: rgba(0, 0, 0, 0.16);
-  --stroke-weak: rgba(0, 0, 0, 0.09);
-  --stroke-faint: rgba(0, 0, 0, 0.055);
+  /* Surface */
+  --canvas: #f9f7f3;
+  --surface-bone: #f3f0e8;
+  --surface-card: #ffffff;
+  --surface-dark: #202020;
+  --surface-deep: #000000;
 
-  --fill-strong: #1d1d1f;
+  /* Lines */
+  --hairline: rgba(32, 32, 32, 0.12);
+  --hairline-strong: #202020;
+  --divider-dark: rgba(255, 255, 255, 0.2);
 
-  --accent-orange: #e8590c;
-  --accent-yellow: #cf9412;
-  --accent-sage: #2f9e63;
-  --accent-blue: #2f6bff;
-  --accent-purple: #7c5cff;
-  --accent-pink: #ec4899;
+  /* ---------------------------------------------------------------
+   * Compatibility shim. Existing markup still references the older
+   * --bg-* / --text-* / --stroke-* / --accent-* tokens; map them onto
+   * the Replicate palette so the port doesn't require touching every
+   * call site.
+   * ------------------------------------------------------------- */
+  --bg-sunken: var(--canvas);
+  --bg-raised: var(--surface-bone);
+  --bg-card: var(--surface-card);
+  --bg-card-hover: var(--surface-bone);
+  --bg-deep: var(--surface-dark);
+
+  --text-strong: var(--ink);
+  --text-weak: var(--body);
+  --text-muted: var(--mute);
+  --text-disabled: var(--stone);
+  --text-inverse-strong: var(--on-primary);
+
+  --stroke-strong: var(--ink);
+  --stroke-weak: var(--hairline);
+  --stroke-faint: var(--hairline);
+
+  --fill-strong: var(--ink);
+
+  /* Bridge legacy "signature-*" accent classes onto Replicate's
+     palette. The brand voltage is now hot orange + cream — the old
+     coral/forest/peach/etc. swatches resolve to the closest match. */
+  --signature-coral: var(--primary);
+  --signature-forest: var(--surface-dark);
+  --signature-cream: var(--surface-bone);
+  --signature-peach: var(--hero-pink);
+  --signature-mint: #bcd8c4;
+  --signature-yellow: #f4d35e;
+  --signature-mustard: #d9a441;
+
+  --accent-orange: var(--primary);
+  --accent-yellow: var(--signature-yellow);
+  --accent-sage: var(--badge-success);
+  --accent-blue: var(--link);
+  --accent-pink: var(--hero-pink);
+  --accent-purple: var(--signature-mustard);
+
+  --info-border: var(--primary);
+  --primary-active: var(--primary-deep);
+  --link-active: var(--primary-deep);
+
+  color-scheme: light;
 }
 
 html[data-theme="dark"] {
-  --bg-sunken: #000000;
-  --bg-raised: #1c1c1e;
-  --bg-card: #1c1c1e;
-  --bg-card-hover: #2a2a2d;
-  --bg-deep: #000000;
+  /* Replicate's dark surfaces. The dark theme keeps the same hot
+     orange accent + on-dark cream text on the deep ink ground. */
+  --canvas: var(--surface-dark);
+  --surface-bone: #2a2a2a;
+  --surface-card: #2a2a2a;
+  --surface-dark: var(--surface-deep);
 
-  --text-strong: #f5f5f7;
-  --text-weak: #aeaeb2;
-  --text-muted: #86868b;
-  --text-disabled: #5b5b60;
-  --text-inverse-strong: #1d1d1f;
+  --ink: var(--on-dark);
+  --body: var(--on-dark-mute);
+  --mute: rgba(252, 252, 252, 0.55);
+  --hairline: var(--divider-dark);
 
-  --stroke-strong: rgba(255, 255, 255, 0.22);
-  --stroke-weak: rgba(255, 255, 255, 0.12);
-  --stroke-faint: rgba(255, 255, 255, 0.07);
+  --bg-sunken: var(--canvas);
+  --bg-raised: var(--surface-bone);
+  --bg-card: var(--surface-card);
+  --bg-card-hover: #353535;
+  --bg-deep: var(--surface-deep);
 
-  --fill-strong: #f5f5f7;
+  --text-strong: var(--ink);
+  --text-weak: var(--body);
+  --text-muted: var(--mute);
+  --text-inverse-strong: var(--ink);
 
-  --accent-orange: #ff7a45;
-  --accent-yellow: #e8b84a;
-  --accent-sage: #54c98a;
-  --accent-blue: #6f9bff;
-  --accent-purple: #a48bff;
-  --accent-pink: #f472b6;
+  --stroke-strong: rgba(252, 252, 252, 0.32);
+  --stroke-weak: var(--hairline);
+  --stroke-faint: rgba(252, 252, 252, 0.08);
+
+  --fill-strong: var(--on-dark);
+  --on-primary: var(--ink);
+
+  --signature-cream: #2a2620;
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-    --bg-sunken: #000000;
-    --bg-raised: #1c1c1e;
-    --bg-card: #1c1c1e;
-    --bg-card-hover: #2a2a2d;
-    --bg-deep: #000000;
-    --text-strong: #f5f5f7;
-    --text-weak: #aeaeb2;
-    --text-muted: #86868b;
-    --text-disabled: #5b5b60;
-    --text-inverse-strong: #1d1d1f;
-    --stroke-strong: rgba(255, 255, 255, 0.22);
-    --stroke-weak: rgba(255, 255, 255, 0.12);
-    --stroke-faint: rgba(255, 255, 255, 0.07);
-    --fill-strong: #f5f5f7;
-    --accent-orange: #ff7a45;
-    --accent-yellow: #e8b84a;
-    --accent-sage: #54c98a;
-    --accent-blue: #6f9bff;
-    --accent-purple: #a48bff;
-    --accent-pink: #f472b6;
+    --canvas: #202020;
+    --surface-bone: #2a2a2a;
+    --surface-card: #2a2a2a;
+    --surface-dark: #000000;
+    --ink: #fcfcfc;
+    --body: rgba(252, 252, 252, 0.72);
+    --mute: rgba(252, 252, 252, 0.55);
+    --hairline: rgba(255, 255, 255, 0.2);
+
+    --bg-sunken: var(--canvas);
+    --bg-raised: var(--surface-bone);
+    --bg-card: var(--surface-card);
+    --bg-card-hover: #353535;
+    --bg-deep: var(--surface-dark);
+
+    --text-strong: var(--ink);
+    --text-weak: var(--body);
+    --text-muted: var(--mute);
+    --text-inverse-strong: var(--ink);
+
+    --stroke-strong: rgba(252, 252, 252, 0.32);
+    --stroke-weak: var(--hairline);
+    --stroke-faint: rgba(252, 252, 252, 0.08);
+
+    --fill-strong: var(--ink);
+    --on-primary: #202020;
+    --signature-cream: #2a2620;
   }
 }
 
-/* Tell the browser which palette we're rendering so form controls match. */
 html { color-scheme: light; }
 html[data-theme="dark"] { color-scheme: dark; }
 @media (prefers-color-scheme: dark) {
@@ -94,73 +169,112 @@ html[data-theme="dark"] { color-scheme: dark; }
 
 /* Tailwind theme — utilities resolve to the live CSS vars above. */
 @theme inline {
+  /* Replicate palette tokens */
+  --color-canvas: var(--canvas);
+  --color-surface-bone: var(--surface-bone);
+  --color-surface-card: var(--surface-card);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-deep: var(--surface-deep);
+  --color-hairline: var(--hairline);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-charcoal: var(--charcoal);
+  --color-mute: var(--mute);
+  --color-muted: var(--mute);
+  --color-ash: var(--ash);
+  --color-stone: var(--stone);
+  --color-on-primary: var(--on-primary);
+  --color-on-dark: var(--on-dark);
+  --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-hero-warm: var(--hero-warm);
+  --color-hero-pink: var(--hero-pink);
+  --color-badge-success: var(--badge-success);
+  --color-link: var(--link);
+  --color-signature-coral: var(--signature-coral);
+  --color-signature-forest: var(--signature-forest);
+  --color-signature-cream: var(--signature-cream);
+  --color-signature-peach: var(--signature-peach);
+  --color-signature-mint: var(--signature-mint);
+  --color-signature-yellow: var(--signature-yellow);
+  --color-signature-mustard: var(--signature-mustard);
+
+  /* Compat aliases */
   --color-bg-sunken: var(--bg-sunken);
   --color-bg-raised: var(--bg-raised);
   --color-bg-card: var(--bg-card);
   --color-bg-card-hover: var(--bg-card-hover);
   --color-bg-deep: var(--bg-deep);
-
   --color-text-strong: var(--text-strong);
   --color-text-weak: var(--text-weak);
   --color-text-muted: var(--text-muted);
   --color-text-disabled: var(--text-disabled);
   --color-text-inverse-strong: var(--text-inverse-strong);
-
   --color-stroke-strong: var(--stroke-strong);
   --color-stroke-weak: var(--stroke-weak);
   --color-stroke-faint: var(--stroke-faint);
-
   --color-fill-strong: var(--fill-strong);
   --color-accent-orange: var(--accent-orange);
   --color-accent-yellow: var(--accent-yellow);
   --color-accent-sage: var(--accent-sage);
   --color-accent-blue: var(--accent-blue);
-  --color-accent-purple: var(--accent-purple);
   --color-accent-pink: var(--accent-pink);
+  --color-accent-purple: var(--accent-purple);
 
-  --font-sans: var(--font-figtree), "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-figtree), "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /*
+   * Bricolage Grotesque stands in for rb-freigeist-neue (heavy,
+   * slightly condensed grotesque) — the official substitute per
+   * DESIGN.md. Inter stands in for basier-square (square sans).
+   * JetBrains Mono carries code, matching the spec.
+   */
+  --font-sans: "Inter", "Basier Square", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Bricolage Grotesque", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
+  /* Radius scale — Replicate's "friendly precision" rule: pill-shape
+     for every interactive surface; cards step up to md/lg. */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
 }
 
 html,
 body {
-  background: var(--bg-sunken);
-  color: var(--text-strong);
+  background: var(--canvas);
+  color: var(--ink);
   font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   min-height: 100dvh;
 }
 
-/* Display utility — bold Figtree for headings */
+/* Display utility — heavy grotesque, tight line-height, negative
+   letter-spacing for that Replicate "packed geometric block" feel. */
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: -0.03em;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
 }
 .font-display em,
 .font-display i {
   font-style: normal;
-  color: var(--accent-orange);
-}
-
-/* Figtree — clean sans, also the global body font */
-.font-figtree {
-  font-family: var(--font-figtree), "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--primary);
 }
 
 ::selection {
-  background: var(--accent-orange);
-  color: #fff;
+  background: var(--primary);
+  color: var(--on-primary);
 }
 
 ::-webkit-scrollbar {
@@ -171,11 +285,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--stroke-weak);
+  background: var(--hairline);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--stroke-strong);
+  background: var(--stone);
 }
 
 /* ===== Scroll reveals (used across landing) ===== */
@@ -240,33 +354,7 @@ body {
   animation-play-state: paused;
 }
 
-/* ===== Level Up nav button — letters ripple in a wave on hover ===== */
-@keyframes wave-letter {
-  0%, 100% { transform: translateY(0); }
-  35% { transform: translateY(-38%); }
-}
-.wave-letter {
-  display: inline-block;
-  will-change: transform;
-}
-.wave-btn:hover .wave-letter {
-  animation: wave-letter 0.55s ease;
-}
 @media (prefers-reduced-motion: reduce) {
-  .wave-btn:hover .wave-letter { animation: none; }
-}
-
-/* ===== Confetti bobble for hero stickers ===== */
-@keyframes bobble {
-  0%, 100% { transform: rotate(var(--r, 0deg)) translateY(0); }
-  50% { transform: rotate(calc(var(--r, 0deg) + 2deg)) translateY(-8px); }
-}
-.bobble {
-  animation: bobble var(--dur, 7s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
-  transform: rotate(var(--r, 0deg));
-}
-@media (prefers-reduced-motion: reduce) {
-  .bobble { animation: none; }
-  .animate-marquee, .animate-marquee--fast { animation: none; }
+  .animate-marquee,
+  .animate-marquee--fast { animation: none; }
 }
