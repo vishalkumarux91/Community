@@ -7,8 +7,7 @@ import { Check } from "@/components/ui/Icons";
 const PERKS = [
   "Live workshops every other Friday",
   "Submit assignments, get an honest assessment",
-  "An open forum for design questions + critique",
-  "Curated playbooks + a tidy resource library",
+  "Track your assessment status on your dashboard",
 ];
 
 type SearchParams = Promise<{ next?: string }>;
@@ -49,7 +48,7 @@ export default async function SignUpPage({
         </div>
       </div>
 
-      <div className="grid place-items-center bg-canvas px-6 py-12">
+      <div className="bg-aurora grid place-items-center px-6 py-12">
         <div className="w-full max-w-[400px] space-y-8">
           <Link href="/" className="lg:hidden">
             <Logo />

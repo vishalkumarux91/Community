@@ -75,10 +75,10 @@ export default async function WorkshopDetailPage({ params }: Params) {
           <div className="mt-10 grid items-start gap-12 md:grid-cols-[1.4fr_1fr]">
             <div>
               <div className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-mute">
-                <span className="rounded-full bg-primary px-2 py-0.5 text-[11px] font-bold tracking-wider text-on-primary">
-                  Live
+                <span className="rounded-full bg-gradient-to-r from-primary to-[#ff6a3d] px-2 py-0.5 text-[11px] font-bold tracking-wider text-on-primary">
+                  {workshop.status === "UPCOMING" ? "Live" : "Recorded"}
                 </span>
-                Upcoming workshop
+                {workshop.status === "UPCOMING" ? "Upcoming workshop" : "Past workshop"}
               </div>
               <h1 className="font-display mt-4 text-[44px] font-bold leading-[1.0] tracking-[-0.025em] text-ink md:text-[64px]">
                 {workshop.title}
@@ -106,10 +106,36 @@ export default async function WorkshopDetailPage({ params }: Params) {
                 </div>
                 <div>
                   <dt className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
-                    Host
+                    {workshop.trainers && workshop.trainers.length > 1
+                      ? "Trainers"
+                      : "Host"}
                   </dt>
-                  <dd className="mt-1 text-ink">{workshop.host}</dd>
-                  <dd className="text-[13px] text-muted">{workshop.hostRole}</dd>
+                  {workshop.trainers && workshop.trainers.length > 0 ? (
+                    workshop.trainers.map((t) => (
+                      <dd key={t.name} className="mt-2 flex items-center gap-2.5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={t.avatar}
+                          alt={t.name}
+                          className="size-8 shrink-0 rounded-full border border-hairline object-cover"
+                          loading="lazy"
+                        />
+                        <span className="flex min-w-0 flex-col leading-tight">
+                          <span className="text-[13px] font-medium text-ink">
+                            {t.name}
+                          </span>
+                          <span className="text-[12px] text-muted">{t.role}</span>
+                        </span>
+                      </dd>
+                    ))
+                  ) : (
+                    <>
+                      <dd className="mt-1 text-ink">{workshop.host}</dd>
+                      <dd className="text-[13px] text-muted">
+                        {workshop.hostRole}
+                      </dd>
+                    </>
+                  )}
                 </div>
                 <div>
                   <dt className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
@@ -126,10 +152,10 @@ export default async function WorkshopDetailPage({ params }: Params) {
                      the community; member registration is wired once
                      auth lands. */}
                 <Link
-                  href="/auth/sign-up"
-                  className="flex w-full items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-3 text-[14px] font-semibold text-on-primary transition-colors hover:bg-[color:var(--primary-deep)]"
+                  href="/auth/sign-up?next=/onboarding"
+                  className="btn-press flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-primary to-[#ff6a3d] px-5 py-3 text-[14px] font-semibold text-on-primary shadow-[0_10px_24px_-10px_rgba(234,40,4,0.6)]"
                 >
-                  Join the community to attend <ArrowRight className="size-3.5" />
+                  Attend this workshop <ArrowRight className="size-3.5" />
                 </Link>
                 <p className="mt-3 text-center text-[12px] text-mute">
                   Already a member?{" "}
@@ -180,12 +206,133 @@ export default async function WorkshopDetailPage({ params }: Params) {
         </Container>
       </section>
 
+      {/* Who this is for */}
+      {workshop.audience && workshop.audience.length > 0 && (
+        <section className="bg-aurora border-b border-hairline py-20 md:py-24">
+          <Container>
+            <div className="grid gap-12 md:grid-cols-[1fr_1.4fr]">
+              <div>
+                <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-mute">
+                  Who this is for
+                </p>
+                <h2 className="font-display mt-3 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[40px]">
+                  Built for designers who want to <span className="gradient-text">ship</span>.
+                </h2>
+              </div>
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {workshop.audience.map((a) => (
+                  <li
+                    key={a}
+                    className="card-lift flex items-start gap-3 rounded-[14px] border border-hairline bg-surface-card p-4 text-[14px] leading-relaxed text-body"
+                  >
+                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-gradient-to-r from-primary to-[#ff6a3d] text-on-primary">
+                      <Check className="size-3" />
+                    </span>
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* Agenda */}
+      {workshop.agenda && workshop.agenda.length > 0 && (
+        <section className="border-b border-hairline bg-canvas py-20 md:py-24">
+          <Container>
+            <div className="grid gap-12 md:grid-cols-[1fr_1.4fr]">
+              <div>
+                <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-mute">
+                  Agenda
+                </p>
+                <h2 className="font-display mt-3 text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[40px]">
+                  {workshop.durationMin} minutes, start to shipped.
+                </h2>
+              </div>
+              <ol className="flex flex-col">
+                {workshop.agenda.map((item, i) => (
+                  <li
+                    key={item.title}
+                    className="group flex gap-5 border-t border-hairline py-5 first:border-t-0"
+                  >
+                    <div className="flex shrink-0 flex-col items-center">
+                      <span className="font-display grid size-9 place-items-center rounded-full bg-surface-bone text-[14px] font-bold text-ink transition-colors group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-[#ff6a3d] group-hover:text-on-primary">
+                        {i + 1}
+                      </span>
+                    </div>
+                    <div className="min-w-0">
+                      {item.duration && (
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-mute">
+                          {item.duration}
+                        </span>
+                      )}
+                      <h3 className="mt-0.5 text-[16px] font-semibold text-ink md:text-[17px]">
+                        {item.title}
+                      </h3>
+                      {item.detail && (
+                        <p className="mt-1 text-[14px] leading-relaxed text-body">
+                          {item.detail}
+                        </p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* Your trainers */}
+      {workshop.trainers && workshop.trainers.length > 0 && (
+        <section className="bg-aurora border-b border-hairline py-20 md:py-24">
+          <Container>
+            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-mute">
+              Your trainers
+            </p>
+            <h2 className="font-display mt-3 max-w-[720px] text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[40px]">
+              Learn from the people who <span className="gradient-text">do this daily</span>.
+            </h2>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {workshop.trainers.map((t) => (
+                <div
+                  key={t.name}
+                  className="card-lift flex items-start gap-4 rounded-[16px] border border-hairline bg-surface-card p-6"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="size-16 shrink-0 rounded-full border border-hairline object-cover"
+                    loading="lazy"
+                  />
+                  <div className="min-w-0">
+                    <h3 className="font-display text-[20px] font-bold leading-[1.2] tracking-[-0.01em] text-ink">
+                      {t.name}
+                    </h3>
+                    <p className="mt-0.5 text-[13px] font-semibold text-primary">
+                      {t.role}
+                    </p>
+                    {t.bio && (
+                      <p className="mt-2 text-[13.5px] leading-relaxed text-body">
+                        {t.bio}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
       {/* Assignment block — visible to everyone, gated for action */}
       {workshop.assignment && (
         <AssignmentBlock
           assignment={workshop.assignment}
           workshopSlug={workshop.slug}
-          isPast={false}
+          isPast={workshop.status === "PAST"}
         />
       )}
 

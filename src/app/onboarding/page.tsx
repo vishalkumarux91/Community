@@ -42,7 +42,7 @@ export default function OnboardingPage() {
   const back = () => setStep((s) => Math.max(s - 1, 0));
 
   return (
-    <div className="grid min-h-dvh place-items-center bg-bg-sunken px-6 py-12">
+    <div className="bg-aurora grid min-h-dvh place-items-center px-6 py-12">
       <div className="w-full max-w-[640px] space-y-8">
         <Link href="/" className="flex items-center gap-2.5">
           <span className="grid size-8 place-items-center rounded-[12px] bg-ink text-[18px] font-medium text-on-primary">
@@ -172,10 +172,10 @@ export default function OnboardingPage() {
                 </p>
               </header>
               <Link
-                href="/forum"
-                className="block rounded-full bg-fill-strong py-2.5 text-center text-sm font-medium text-text-inverse-strong"
+                href="/dashboard"
+                className="btn-press block rounded-full bg-gradient-to-r from-primary to-[#ff6a3d] py-2.5 text-center text-sm font-semibold text-on-primary shadow-[0_8px_20px_-8px_rgba(234,40,4,0.5)]"
               >
-                Go to the community
+                Go to my dashboard
               </Link>
             </>
           )}

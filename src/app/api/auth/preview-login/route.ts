@@ -10,8 +10,8 @@ import { NextResponse } from "next/server";
  */
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const next = String(formData.get("next") ?? "/forum");
-  const safeNext = next.startsWith("/") ? next : "/forum";
+  const next = String(formData.get("next") ?? "/dashboard");
+  const safeNext = next.startsWith("/") ? next : "/dashboard";
 
   const res = NextResponse.redirect(new URL(safeNext, request.url), {
     status: 303,

@@ -4,11 +4,7 @@ import { Container } from "@/components/ui/Container";
 const COLUMNS: { title: string; items: [string, string][] }[] = [
   {
     title: "Community",
-    items: [
-      ["Workshops", "/workshops"],
-      ["Playbooks", "/playbooks"],
-      ["Resources", "/resources"],
-    ],
+    items: [["Workshops", "/workshops"]],
   },
   {
     title: "Account",
@@ -56,8 +52,8 @@ export function SiteFooter() {
                 className="mt-3 max-w-xs text-[14px] leading-[1.55]"
                 style={{ color: "var(--on-dark-mute)" }}
               >
-                Quiet weekly notes — new workshops, fresh playbooks, picked
-                articles.
+                Quiet weekly notes — new workshops, assignments, and what the
+                community shipped.
               </p>
               <Link
                 href="/auth/sign-up"

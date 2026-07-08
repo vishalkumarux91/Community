@@ -14,22 +14,22 @@ export function Button({
   size?: Size;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-orange focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken disabled:opacity-50 disabled:pointer-events-none";
+    "btn-press inline-flex items-center justify-center gap-2 rounded-full font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-orange focus-visible:ring-offset-2 focus-visible:ring-offset-bg-sunken disabled:opacity-50 disabled:pointer-events-none";
 
   const sizes: Record<Size, string> = {
-    sm: "h-8 px-3 text-sm",
-    md: "h-10 px-5 text-sm",
-    lg: "h-12 px-6 text-base",
+    sm: "h-9 px-4 text-sm",
+    md: "h-11 px-5 text-sm",
+    lg: "h-12 px-7 text-base",
   };
 
   const variants: Record<Variant, string> = {
     primary:
-      "bg-fill-strong text-text-inverse-strong hover:bg-white/90",
+      "btn-circle bg-primary text-on-primary hover:bg-[color:var(--primary-deep)]",
     secondary:
-      "bg-white/[0.06] text-text-strong hover:bg-white/[0.1] border border-stroke-weak",
-    ghost: "text-text-weak hover:text-text-strong hover:bg-white/[0.04]",
+      "bg-surface-card text-text-strong border border-stroke-weak shadow-[0_6px_18px_-10px_rgba(16,24,40,0.35)] hover:bg-surface-bone",
+    ghost: "text-text-weak hover:text-text-strong hover:bg-surface-bone",
     outline:
-      "border border-stroke-weak text-text-strong hover:bg-white/[0.04]",
+      "border border-stroke-weak text-text-strong hover:bg-surface-bone",
   };
 
   return (

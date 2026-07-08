@@ -57,7 +57,7 @@ export function AssignmentBlock({
             {assignment.dueAt && (
               <p className="mt-4 inline-flex rounded-[6px] border border-hairline bg-canvas px-2.5 py-1 text-[12px] text-muted">
                 Due{" "}
-                {new Date(assignment.dueAt).toLocaleDateString(undefined, {
+                {new Date(assignment.dueAt).toLocaleDateString("en-US", {
                   weekday: "short",
                   month: "short",
                   day: "numeric",
@@ -108,10 +108,10 @@ export function AssignmentBlock({
                   usually within a week.
                 </p>
                 <Link
-                  href="/me/submissions"
+                  href="/dashboard"
                   className="mx-auto mt-5 inline-flex items-center gap-1.5 rounded-[12px] border border-hairline bg-canvas px-4 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-surface-bone"
                 >
-                  View My submissions <ArrowRight className="size-3.5" />
+                  View on my dashboard <ArrowRight className="size-3.5" />
                 </Link>
               </div>
             ) : !isPast ? (

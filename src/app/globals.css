@@ -358,3 +358,137 @@ body {
   .animate-marquee,
   .animate-marquee--fast { animation: none; }
 }
+
+/* ===== 2026 refresh — gradients + eased micro-interactions ===== */
+
+/* Soft aurora wash — layered radial gradients over the warm canvas.
+   Used on the landing hero, auth, onboarding, and app shell. */
+.bg-aurora {
+  background:
+    radial-gradient(1000px 520px at 12% -8%, rgba(255, 106, 61, 0.16), transparent 60%),
+    radial-gradient(900px 520px at 88% 0%, rgba(244, 168, 160, 0.22), transparent 60%),
+    radial-gradient(760px 480px at 50% 110%, rgba(244, 211, 94, 0.14), transparent 60%),
+    var(--canvas);
+}
+html[data-theme="dark"] .bg-aurora {
+  background:
+    radial-gradient(1000px 520px at 12% -8%, rgba(234, 40, 4, 0.22), transparent 60%),
+    radial-gradient(900px 520px at 88% 0%, rgba(255, 106, 61, 0.12), transparent 60%),
+    radial-gradient(760px 480px at 50% 110%, rgba(244, 211, 94, 0.08), transparent 60%),
+    var(--canvas);
+}
+
+/* Gradient headline accent. */
+.gradient-text {
+  background: linear-gradient(92deg, var(--primary) 0%, var(--hero-glow) 55%, var(--hero-pink) 110%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Card micro-interaction — gentle lift + shadow bloom. */
+.card-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -18px rgba(32, 32, 32, 0.22);
+}
+
+/* Button micro-interaction — hover lift, active press. */
+.btn-press {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.25s ease;
+}
+.btn-press:hover {
+  transform: translateY(-1.5px);
+  filter: brightness(1.05);
+}
+.btn-press:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ===== Circle.so-inspired surface treatment ===== */
+
+/* Vibrant, airy mesh-gradient hero. Light enough that dark ink text
+   stays readable — lavender → sky → warm peach, Circle-style. */
+.bg-circle-hero {
+  background:
+    radial-gradient(1200px 720px at 6% -6%, rgba(139, 116, 255, 0.34), transparent 55%),
+    radial-gradient(1000px 780px at 96% 4%, rgba(255, 138, 110, 0.30), transparent 55%),
+    radial-gradient(1050px 760px at 78% 96%, rgba(96, 178, 255, 0.30), transparent 58%),
+    radial-gradient(900px 700px at 20% 108%, rgba(255, 176, 214, 0.28), transparent 60%),
+    linear-gradient(180deg, #f6f3ff 0%, #fef4ee 100%);
+}
+html[data-theme="dark"] .bg-circle-hero {
+  background:
+    radial-gradient(1200px 720px at 6% -6%, rgba(139, 116, 255, 0.30), transparent 55%),
+    radial-gradient(1000px 780px at 96% 4%, rgba(255, 138, 110, 0.22), transparent 55%),
+    radial-gradient(1050px 760px at 78% 96%, rgba(96, 178, 255, 0.24), transparent 58%),
+    radial-gradient(900px 700px at 20% 108%, rgba(255, 176, 214, 0.18), transparent 60%),
+    linear-gradient(180deg, #17151f 0%, #1d1a24 100%);
+}
+
+/* Circle-style card — white surface, hairline border, soft layered
+   shadow, generous radius, gentle lift on hover. */
+.circle-card {
+  border-radius: 20px;
+  border: 1px solid var(--hairline);
+  background: var(--surface-card);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.04),
+    0 10px 28px -14px rgba(16, 24, 40, 0.16);
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.32s ease;
+}
+.circle-card--hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 2px 4px rgba(16, 24, 40, 0.05),
+    0 26px 48px -18px rgba(16, 24, 40, 0.22);
+  border-color: rgba(139, 116, 255, 0.4);
+}
+html[data-theme="dark"] .circle-card {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 12px 30px -14px rgba(0, 0, 0, 0.5);
+}
+
+/* Circle-style primary button — solid accent, rounded, resting shadow
+   that blooms on hover; pairs with .btn-press for the lift/press. */
+.btn-circle {
+  box-shadow: 0 8px 20px -8px rgba(234, 40, 4, 0.55);
+}
+.btn-circle:hover {
+  box-shadow: 0 14px 28px -8px rgba(234, 40, 4, 0.6);
+}
+
+/* One-shot entrance for app surfaces (no scroll observer needed). */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.reveal-up {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Smooth, visible focus for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-lift, .btn-press, .circle-card { transition: none; }
+  .card-lift:hover, .btn-press:hover, .btn-press:active,
+  .circle-card--hover:hover { transform: none; }
+  .reveal-up { animation: none; }
+}

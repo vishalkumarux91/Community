@@ -4,10 +4,9 @@ import type { NextRequest } from "next/server";
 /**
  * Member-only route gate.
  *
- * Logged-out visitors who hit /forum/**, /playbooks/**, or /me/**
- * are redirected to /auth/sign-up with the original URL preserved as
- * `?next=...` so post-signup we can drop them back where they came
- * from.
+ * Logged-out visitors who hit /dashboard/** are redirected to
+ * /auth/sign-up with the original URL preserved as `?next=...` so
+ * post-signup we can drop them back where they came from.
  *
  * Session is detected via:
  *   1. Auth.js session cookies (once that lands)
@@ -38,7 +37,7 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Gate the member-only surfaces. Workshops + Resources stay public
-  // (they're the acquisition funnel).
-  matcher: ["/forum/:path*", "/playbooks/:path*", "/me/:path*"],
+  // Gate the member dashboard. Workshops stay public (they're the
+  // acquisition funnel).
+  matcher: ["/dashboard/:path*"],
 };

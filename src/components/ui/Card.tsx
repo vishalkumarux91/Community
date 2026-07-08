@@ -25,8 +25,8 @@ export function Card({
     // @ts-expect-error — discriminated union is satisfied at the call site
     <Component
       className={cn(
-        "rounded-2xl border border-stroke-weak bg-bg-card transition-colors",
-        hover && "hover:border-stroke-strong hover:bg-bg-card-hover",
+        "circle-card",
+        hover && "circle-card--hover",
         className,
       )}
       {...props}

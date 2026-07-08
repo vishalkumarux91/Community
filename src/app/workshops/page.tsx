@@ -19,14 +19,14 @@ export default function WorkshopsPage() {
     <main className="min-h-dvh bg-canvas text-ink">
       <SiteHeader />
 
-      <section className="border-b border-hairline bg-canvas">
+      <section className="bg-aurora border-b border-hairline">
         <Container className="py-24 md:py-28">
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-mute">
             Workshops
           </p>
           <h1 className="font-display mt-3 text-[44px] font-bold leading-[1.0] tracking-[-0.025em] text-ink md:text-[72px]">
             Live builds. Real briefs.{" "}
-            <em>Industry-ready</em> by Friday.
+            <span className="gradient-text">Industry-ready</span> by Friday.
           </h1>
           <p className="mt-5 max-w-[640px] text-[16px] leading-[1.55] text-body md:text-[18px]">
             Every workshop is a live build — you walk away with something
@@ -72,7 +72,7 @@ function WorkshopCard({ workshop }: { workshop: Workshop }) {
   return (
     <Link
       href={`/workshops/${workshop.slug}`}
-      className="group flex flex-col overflow-hidden rounded-[16px] border border-hairline bg-surface-card transition-transform duration-300 hover:-translate-y-1"
+      className="circle-card circle-card--hover group flex flex-col overflow-hidden"
     >
       <div className="aspect-[16/9] overflow-hidden bg-surface-bone">
         {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -49,7 +49,7 @@ export function WorkshopsPreview() {
         {/* Hero card — image left, content right at desktop. */}
         <Link
           href={`/workshops/${workshop.slug}`}
-          className="group grid overflow-hidden rounded-[16px] border border-hairline bg-surface-card transition-transform duration-300 hover:-translate-y-1 md:grid-cols-[1.2fr_1fr]"
+          className="circle-card circle-card--hover group grid overflow-hidden md:grid-cols-[1.2fr_1fr]"
         >
           <div className="aspect-[16/10] overflow-hidden bg-surface-bone md:aspect-auto">
             {/* eslint-disable-next-line @next/next/no-img-element */}
